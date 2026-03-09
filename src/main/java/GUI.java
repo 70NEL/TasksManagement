@@ -26,6 +26,11 @@ public class GUI {
     private JLabel lbModifyStatus;
     private JComboBox cbTaskType;
     private JLabel lbTaskType;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JLabel lbStartHr;
+    private JLabel lbStopHr;
+    private JButton btnCalculateWorkDur;
 
     public GUI() {
         btnAddEmployee.addActionListener(new ActionListener() {

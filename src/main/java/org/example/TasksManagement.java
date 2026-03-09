@@ -6,6 +6,10 @@ import java.util.*;
 public class TasksManagement implements Serializable {
     private Map<Employee, List<Task>> employees = new HashMap<>();
 
+    public Map<Employee, List<Task>>  getEmployees() {
+        return this.employees;
+    }
+
     public void addEmployee(Employee employee) {
         if(!employees.containsKey(employee)) {
             employees.put(employee, new ArrayList<>());
