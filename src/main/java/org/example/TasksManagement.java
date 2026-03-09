@@ -4,7 +4,19 @@ import java.io.Serializable;
 import java.util.*;
 
 public class TasksManagement implements Serializable {
-    private Map<Employee, List<Task>> employees = new HashMap<>();
+    private static TasksManagement instance;
+    private Map<Employee, List<Task>> employees;
+
+    public TasksManagement() {
+        employees = new HashMap<>();
+    }
+
+    public static TasksManagement getInstance() {
+        if (instance == null) {
+            instance = new TasksManagement();
+        }
+        return instance;
+    }
 
     public Map<Employee, List<Task>>  getEmployees() {
         return this.employees;
