@@ -4,10 +4,17 @@ import java.io.Serializable;
 import java.util.*;
 
 public class TasksManagement implements Serializable {
-    private         Map<Employee, List<Task>> employees = new HashMap<>();
+    private Map<Employee, List<Task>> employees = new HashMap<>();
+
+    public void addEmployee(Employee employee) {
+        if(!employees.containsKey(employee)) {
+            employees.put(employee, new ArrayList<>());
+        }
+    }
 
     public void assignTaskToEmployee(int idEmployee, Task task) {
         for (Employee employee : employees.keySet()) {
+
             if(idEmployee == employee.getIdEmployee()){
                 employees.get(employee).add(task);
             }
