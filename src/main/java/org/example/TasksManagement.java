@@ -14,7 +14,6 @@ public class TasksManagement implements Serializable {
 
     public void assignTaskToEmployee(int idEmployee, Task task) {
         for (Employee employee : employees.keySet()) {
-
             if(idEmployee == employee.getIdEmployee()){
                 employees.get(employee).add(task);
             }
@@ -22,12 +21,32 @@ public class TasksManagement implements Serializable {
     }
 
     public int calculateEmployeeWorkDuration(int idEmployee) {
+        int sum = 0;
         for(Employee e: employees.keySet()) {
-
+            if(idEmployee == e.getIdEmployee()){
+                for(Task task: employees.get(e)) {
+                    if(task.getStatusTask().equals("Completed")) {
+                        sum += task.estimateDuration();
+                    }
+                }
+            }
         }
+        return sum;
     }
 
     public void modifyTaskStatus(int idEmployee, int idTask) {
-
+        for(Employee e: employees.keySet()) {
+            if(idEmployee == e.getIdEmployee()){
+                for(Task task: employees.get(e)) {
+                    if(task.getIdTask() == idTask) {
+                        if(task.getStatusTask().equals("Completed")) {
+                            task.setStatusTask("Uncompleted");
+                        }else {
+                            task.setStatusTask("Completed");
+                        }
+                    }
+                }
+            }
+        }
     }
 }
