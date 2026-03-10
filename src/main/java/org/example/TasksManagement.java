@@ -6,6 +6,7 @@ import java.util.*;
 public class TasksManagement implements Serializable {
     private static TasksManagement instance;
     private Map<Employee, List<Task>> employees;
+    private List<Task> tasks;
 
     public TasksManagement() {
         employees = new HashMap<>();
@@ -28,10 +29,18 @@ public class TasksManagement implements Serializable {
         }
     }
 
+    public void addTask(Task task) {
+        if(!tasks.contains(task)) {
+            tasks.add(task);
+        }
+    }
+
     public void assignTaskToEmployee(int idEmployee, Task task) {
-        for (Employee employee : employees.keySet()) {
-            if(idEmployee == employee.getIdEmployee()){
-                employees.get(employee).add(task);
+        if(tasks.contains(task)) {
+            for (Employee employee : employees.keySet()) {
+                if(idEmployee == employee.getIdEmployee()){
+                    employees.get(employee).add(task);
+                }
             }
         }
     }

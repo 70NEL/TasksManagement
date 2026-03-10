@@ -31,8 +31,8 @@ public class GUI extends Container {
     private JLabel lbModifyStatus;
     private JComboBox cbTaskType;
     private JLabel lbTaskType;
-    private JTextField textField1;
-    private JTextField textField2;
+    private JTextField tfStartHr;
+    private JTextField tfStopHr;
     private JLabel lbStartHr;
     private JLabel lbStopHr;
     private JButton btnCalculateWorkDur;
@@ -71,6 +71,7 @@ public class GUI extends Container {
                         System.out.println(task.getIdTask() + task.estimateDuration());
                     }
                 }
+                JOptionPane.showMessageDialog(null, "Tasks Displayed Successfully!");
             }
         });
         btnAddTask.addActionListener(new ActionListener() {
@@ -81,6 +82,14 @@ public class GUI extends Container {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
+                TasksManagement newManagement = TasksManagement.getInstance();
+                Task tsk;
+                if(cbTaskType.getSelectedItem() == "Complex") {
+                    tsk = new ComplexTask();
+                }else {
+                    tsk = new SimpleTask();
+                }
+
 
             }
         });
@@ -118,6 +127,24 @@ public class GUI extends Container {
                 for(Employee emp : newManagement.getEmployees().keySet()) {
                     System.out.println(emp.getName() + " works :" + newManagement.calculateEmployeeWorkDuration(emp.getIdEmployee()));
                 }
+                JOptionPane.showMessageDialog(null, "Works Duration Calculated Successfully!");
+            }
+        });
+        cbTaskType.addActionListener(new ActionListener() {
+            /**
+             * Invoked when an action occurs.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedItem = (String) cbTaskType.getSelectedItem();
+                boolean isSimple = "Simple".equals(selectedItem);
+
+                tfStartHr.setVisible(isSimple);
+                tfStopHr.setVisible(isSimple);
+                lbStartHr.setVisible(isSimple);
+                lbStopHr.setVisible(isSimple);
             }
         });
     }

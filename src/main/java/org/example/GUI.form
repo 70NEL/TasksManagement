@@ -45,22 +45,6 @@
                   <text value="Employee Name"/>
                 </properties>
               </component>
-              <component id="bb8d2" class="javax.swing.JTextField" binding="tfEmployeeName">
-                <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                </constraints>
-                <properties/>
-              </component>
-              <component id="4c103" class="javax.swing.JTextField" binding="tfEmployeeID">
-                <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="1" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                </constraints>
-                <properties/>
-              </component>
               <component id="9ee56" class="javax.swing.JButton" binding="btnAddEmployee">
                 <constraints>
                   <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
@@ -96,6 +80,22 @@
                   <text value="Calculate Work Duration"/>
                 </properties>
               </component>
+              <component id="4c103" class="javax.swing.JTextField" binding="tfEmployeeID">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="1" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="bb8d2" class="javax.swing.JTextField" binding="tfEmployeeName">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties/>
+              </component>
             </children>
           </grid>
           <grid id="9918c" binding="JPanelAddTask" layout-manager="GridLayoutManager" row-count="4" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -126,7 +126,7 @@
               </vspacer>
               <component id="63955" class="javax.swing.JTextField" binding="tfTaskID">
                 <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
@@ -151,9 +151,14 @@
               </component>
               <component id="34b26" class="javax.swing.JComboBox" binding="cbTaskType">
                 <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties/>
+                <properties>
+                  <model>
+                    <item value="Simple"/>
+                    <item value="Complex"/>
+                  </model>
+                </properties>
               </component>
               <component id="aeb57" class="javax.swing.JLabel" binding="lbStartHr">
                 <constraints>
@@ -163,9 +168,9 @@
                   <text value="Start Hour"/>
                 </properties>
               </component>
-              <component id="4ed1" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+              <component id="4ed1" class="javax.swing.JTextField" binding="tfStartHr">
                 <constraints>
-                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
@@ -179,7 +184,7 @@
                   <text value="Stop Hour"/>
                 </properties>
               </component>
-              <component id="26a00" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+              <component id="26a00" class="javax.swing.JTextField" binding="tfStopHr">
                 <constraints>
                   <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -219,7 +224,7 @@
               </vspacer>
               <component id="258f2" class="javax.swing.JTextField" binding="tfEmployeeIDTask">
                 <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
@@ -235,7 +240,7 @@
               </component>
               <component id="8279c" class="javax.swing.JTextField" binding="tfTaskIDTask">
                 <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
