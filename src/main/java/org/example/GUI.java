@@ -39,6 +39,10 @@ public class GUI extends Container {
     private JCheckBox cbModStatus;
 
     public GUI() {
+        lbModifyStatus.setVisible(false);
+        cbModifyStatus.setVisible(false);
+        btnModifyStatus.setVisible(false);
+
         btnAddEmployee.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
@@ -102,6 +106,34 @@ public class GUI extends Container {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
+                TasksManagement newManagement = TasksManagement.getInstance();
+                Map<Employee, List<Task>> employees = newManagement.getEmployees();
+                String employeeID = tfEmployeeID.getText();
+                String taskID = tfTaskID.getText();
+                Task tsk = null;
+                boolean isTaskIdValid = false;
+
+                for(Employee emp : employees.keySet()) {
+                    for(Task task : employees.get(emp)) {
+                        if(taskID.equals(task.getIdTask())) {
+                            isTaskIdValid = true;
+                            tsk = task;
+                            break;
+                        }
+                    }
+                }
+                if(isTaskIdValid) {
+                    for(Employee emp : employees.keySet()) {
+                        Integer tmp = Integer.parseInt(employeeID);
+                        if(tmp.equals(emp.getIdEmployee())) {
+                            List<Task> lst = employees.get(emp);
+                            lst.add(tsk);
+                            JOptionPane.showMessageDialog(null, "Task Assigned Successfully!");
+                        }
+                    }
+                }else {
+                    JOptionPane.showMessageDialog(null, "The Task WAS NOT Assigned Successfully!");
+                }
 
             }
         });
@@ -113,7 +145,22 @@ public class GUI extends Container {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                TasksManagement newManagement = TasksManagement.getInstance();
+                Map<Employee, List<Task>> employees = newManagement.getEmployees();
+                for(Employee emp : employees.keySet()) {
+                    if(tfEmployeeIDTask.getText().equals(emp.getIdEmployee())) {
+                        for(Task task : employees.get(emp)) {
+                            if(tfTaskIDTask.getText().equals(task.getIdTask())) {
+                                if(cbModifyStatus.getSelectedItem() == "Completed") {
+                                    task.setStatusTask("Completed");
+                                }else {
+                                    task.setStatusTask("Uncompleted");
+                                }
+                            }
+                        }
+                    }
+                }
+                JOptionPane.showMessageDialog(null, "Task Status was modified Successfully!");
             }
         });
         btnCalculateWorkDur.addActionListener(new ActionListener() {
