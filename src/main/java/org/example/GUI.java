@@ -1,14 +1,15 @@
-import org.example.Employee;
-import org.example.Task;
-import org.example.TasksManagement;
+package org.example;
+
+import java.awt.*;
 import java.util.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
-public class GUI {
+public class GUI extends Container {
     private JTabbedPane tabbedPane;
-    private JPanel panel1;
+    JPanel panel1;
     private JPanel JPanelEmployee;
     private JTextField tfEmployeeName;
     private JTextField tfEmployeeID;
@@ -50,6 +51,7 @@ public class GUI {
                 emp.setName(tfEmployeeName.getText());
                 emp.setIdEmployee(Integer.parseInt(tfEmployeeID.getText()));
                 newManagement.addEmployee(emp);
+                JOptionPane.showMessageDialog(null, "Employee Added Successfully!");
             }
         });
         btnDisplayTasks.addActionListener(new ActionListener() {
