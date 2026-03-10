@@ -6,7 +6,7 @@ import java.util.*;
 public class TasksManagement implements Serializable {
     private static TasksManagement instance;
     private Map<Employee, List<Task>> employees;
-    private List<Task> tasks;
+    private List<Task> tasks = new ArrayList<>();
 
     public TasksManagement() {
         employees = new HashMap<>();

@@ -88,14 +88,18 @@ public class GUI extends Container {
             @Override
             public void actionPerformed(ActionEvent e) {
                 TasksManagement newManagement = TasksManagement.getInstance();
-                Task tsk;
+                Task tsk = null;
                 if(cbTaskType.getSelectedItem() == "Complex") {
                     tsk = new ComplexTask();
                 }else {
                     tsk = new SimpleTask();
                 }
 
+                if(tsk != null) {
+                    newManagement.addTask(tsk);
+                }
 
+                JOptionPane.showMessageDialog(null, "Task Added Successfully!");
             }
         });
         btnAssign.addActionListener(new ActionListener() {
@@ -112,6 +116,7 @@ public class GUI extends Container {
                 String taskID = tfTaskID.getText();
                 Task tsk = null;
                 boolean isTaskIdValid = false;
+                Integer tmp = Integer.parseInt(employeeID);
 
                 for(Employee emp : employees.keySet()) {
                     for(Task task : employees.get(emp)) {
@@ -124,7 +129,6 @@ public class GUI extends Container {
                 }
                 if(isTaskIdValid) {
                     for(Employee emp : employees.keySet()) {
-                        Integer tmp = Integer.parseInt(employeeID);
                         if(tmp.equals(emp.getIdEmployee())) {
                             List<Task> lst = employees.get(emp);
                             lst.add(tsk);
