@@ -26,4 +26,29 @@ public class Utility {
             System.out.println(e.getName() + " works " + info.calculateEmployeeWorkDuration(e.getIdEmployee()));
         }
     }
+
+    public Map<String,Map<String, Integer>> nrOfTasks() {
+        TasksManagement newManagement = TasksManagement.getInstance();
+        Map<Employee, List<Task>> employees =  newManagement.getEmployees();
+        String employeeName; Integer[] taskNumber = new Integer[2];
+        Map<String,Map<String, Integer>> result = new HashMap<>();
+
+        for(Employee e: employees.keySet()){
+            List<Task> temp = employees.get(e);
+            employeeName = e.getName();
+            for(Task task: temp){
+                if(task.getStatusTask().equals("Completed")) {
+                    taskNumber[0] = taskNumber[0] + 1;
+                }else {
+                    taskNumber[1] = taskNumber[1] + 1;
+                }
+            }
+            Map<String, Integer> mapTask = new HashMap<>();
+            mapTask.put("Completed", taskNumber[0]);
+            mapTask.put("Uncompleted", taskNumber[1]);
+            result.put(employeeName,mapTask);
+        }
+
+        return result;
+    }
 }
