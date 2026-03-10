@@ -36,6 +36,7 @@ public class GUI extends Container {
     private JLabel lbStartHr;
     private JLabel lbStopHr;
     private JButton btnCalculateWorkDur;
+    private JCheckBox cbModStatus;
 
     public GUI() {
         btnAddEmployee.addActionListener(new ActionListener() {
@@ -145,6 +146,21 @@ public class GUI extends Container {
                 tfStopHr.setVisible(isSimple);
                 lbStartHr.setVisible(isSimple);
                 lbStopHr.setVisible(isSimple);
+            }
+        });
+        cbModStatus.addActionListener(new ActionListener() {
+            /**
+             * Invoked when an action occurs.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                boolean checked = cbModStatus.isSelected();
+
+                lbModifyStatus.setVisible(checked);
+                cbModifyStatus.setVisible(checked);
+                btnModifyStatus.setVisible(checked);
             }
         });
     }
