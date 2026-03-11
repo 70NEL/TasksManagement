@@ -29,20 +29,29 @@ public class TasksManagement implements Serializable {
         }
     }
 
-    public void addTask(Task task) {
+    public boolean addTask(Task task) {
         if(!tasks.contains(task)) {
+            for(Task t: tasks) {
+                if(t.getIdTask() == task.getIdTask()) {
+                    return false;
+                }
+            }
             tasks.add(task);
+            return true;
         }
+        return false;
     }
 
-    public void assignTaskToEmployee(int idEmployee, Task task) {
+    public boolean assignTaskToEmployee(int idEmployee, Task task) {
         if(tasks.contains(task)) {
             for (Employee employee : employees.keySet()) {
                 if(idEmployee == employee.getIdEmployee()){
                     employees.get(employee).add(task);
+                    return true;
                 }
             }
         }
+        return false;
     }
 
     public int calculateEmployeeWorkDuration(int idEmployee) {
@@ -50,7 +59,7 @@ public class TasksManagement implements Serializable {
         for(Employee e: employees.keySet()) {
             if(idEmployee == e.getIdEmployee()){
                 for(Task task: employees.get(e)) {
-                    if(task.getStatusTask().equals("Completed")) {
+                    if("Completed".equals(task.getStatusTask())) {
                         sum += task.estimateDuration();
                     }
                 }
@@ -59,19 +68,30 @@ public class TasksManagement implements Serializable {
         return sum;
     }
 
-    public void modifyTaskStatus(int idEmployee, int idTask) {
+    public Task findTaskById(int idTask) {
+        for(Task tsk: tasks) {
+            if(tsk.getIdTask() == idTask) {
+                return tsk;
+            }
+        }
+        return null;
+    }
+
+    public boolean modifyTaskStatus(int idEmployee, int idTask) {
         for(Employee e: employees.keySet()) {
             if(idEmployee == e.getIdEmployee()){
                 for(Task task: employees.get(e)) {
                     if(task.getIdTask() == idTask) {
-                        if(task.getStatusTask().equals("Completed")) {
+                        if("Completed".equals(task.getStatusTask())) {
                             task.setStatusTask("Uncompleted");
                         }else {
                             task.setStatusTask("Completed");
                         }
+                        return true;
                     }
                 }
             }
         }
+        return false;
     }
 }

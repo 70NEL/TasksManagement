@@ -59,6 +59,7 @@ public class GUI extends Container {
                 JOptionPane.showMessageDialog(null, "Employee Added Successfully!");
             }
         });
+
         btnDisplayTasks.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
@@ -71,14 +72,20 @@ public class GUI extends Container {
                 Map<Employee, List<Task>> map = newManagement.getEmployees();
                 for(Employee emp : newManagement.getEmployees().keySet()) {
                     List<Task> tasks = map.get(emp);
-                    System.out.println(emp.getName() + " " + emp.getIdEmployee());
+                    System.out.print("Name :" + emp.getName() + " with ID: " + emp.getIdEmployee());
+                    int k = 1;
                     for(Task task : tasks) {
-                        System.out.println(task.getIdTask() + task.estimateDuration());
+                        if(k==1) {
+                            System.out.println(" ,was assigned the following tasks :");
+                            k=0;
+                        }
+                        System.out.println("Task ID: " + task.getIdTask() + " | " + "Estimated Duration : " + task.estimateDuration());
                     }
                 }
                 JOptionPane.showMessageDialog(null, "Tasks Displayed Successfully!");
             }
         });
+
         btnAddTask.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
@@ -92,16 +99,24 @@ public class GUI extends Container {
                 if(cbTaskType.getSelectedItem() == "Complex") {
                     tsk = new ComplexTask();
                 }else {
-                    tsk = new SimpleTask();
+                    SimpleTask tk = new SimpleTask();
+                    tk.setStartHour(Integer.parseInt(tfStartHr.getText()));
+                    tk.setEndHour(Integer.parseInt(tfStopHr.getText()));
+                    tsk = tk;
                 }
 
                 if(tsk != null) {
-                    newManagement.addTask(tsk);
+                    tsk.setIdTask(Integer.parseInt(tfTaskID.getText()));
+                    boolean isDone = newManagement.addTask(tsk);
+                    if(isDone) {
+                        JOptionPane.showMessageDialog(null, "Task Added Successfully!");
+                    }else {
+                        JOptionPane.showMessageDialog(null, "Task Added Failed!");
+                    }
                 }
-
-                JOptionPane.showMessageDialog(null, "Task Added Successfully!");
             }
         });
+
         btnAssign.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
@@ -111,36 +126,24 @@ public class GUI extends Container {
             @Override
             public void actionPerformed(ActionEvent e) {
                 TasksManagement newManagement = TasksManagement.getInstance();
-                Map<Employee, List<Task>> employees = newManagement.getEmployees();
-                String employeeID = tfEmployeeID.getText();
-                String taskID = tfTaskID.getText();
-                Task tsk = null;
-                boolean isTaskIdValid = false;
-                Integer tmp = Integer.parseInt(employeeID);
+                int taskID = Integer.parseInt(tfTaskIDTask.getText());
+                int employeeID = Integer.parseInt(tfEmployeeIDTask.getText());
+                Task tsk = newManagement.findTaskById(taskID);
 
-                for(Employee emp : employees.keySet()) {
-                    for(Task task : employees.get(emp)) {
-                        if(taskID.equals(task.getIdTask())) {
-                            isTaskIdValid = true;
-                            tsk = task;
-                            break;
-                        }
-                    }
-                }
-                if(isTaskIdValid) {
-                    for(Employee emp : employees.keySet()) {
-                        if(tmp.equals(emp.getIdEmployee())) {
-                            List<Task> lst = employees.get(emp);
-                            lst.add(tsk);
-                            JOptionPane.showMessageDialog(null, "Task Assigned Successfully!");
-                        }
+                if(tsk != null) {
+                    boolean isDone = newManagement.assignTaskToEmployee(employeeID, tsk);
+                    if(!isDone) {
+                        JOptionPane.showMessageDialog(null, "Task WAS NOT Assigned Successfully!");
+                    }else {
+                        JOptionPane.showMessageDialog(null, "Task Assigned Successfully!");
                     }
                 }else {
-                    JOptionPane.showMessageDialog(null, "The Task WAS NOT Assigned Successfully!");
+                    JOptionPane.showMessageDialog(null, "The Task is not available in the company's list!");
                 }
 
             }
         });
+
         btnModifyStatus.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
@@ -151,22 +154,17 @@ public class GUI extends Container {
             public void actionPerformed(ActionEvent e) {
                 TasksManagement newManagement = TasksManagement.getInstance();
                 Map<Employee, List<Task>> employees = newManagement.getEmployees();
-                for(Employee emp : employees.keySet()) {
-                    if(tfEmployeeIDTask.getText().equals(emp.getIdEmployee())) {
-                        for(Task task : employees.get(emp)) {
-                            if(tfTaskIDTask.getText().equals(task.getIdTask())) {
-                                if(cbModifyStatus.getSelectedItem() == "Completed") {
-                                    task.setStatusTask("Completed");
-                                }else {
-                                    task.setStatusTask("Uncompleted");
-                                }
-                            }
-                        }
-                    }
+                int empID = Integer.parseInt(tfEmployeeIDTask.getText());
+                int taskID = Integer.parseInt(tfTaskIDTask.getText());
+                boolean isDone = newManagement.modifyTaskStatus(empID, taskID);
+                if(isDone == false) {
+                    JOptionPane.showMessageDialog(null, "Task Status WAS NOT Modified Successfully!");
+                }else {
+                    JOptionPane.showMessageDialog(null, "Task Status was modified Successfully!");
                 }
-                JOptionPane.showMessageDialog(null, "Task Status was modified Successfully!");
             }
         });
+
         btnCalculateWorkDur.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
@@ -177,11 +175,12 @@ public class GUI extends Container {
             public void actionPerformed(ActionEvent e) {
                 TasksManagement newManagement = TasksManagement.getInstance();
                 for(Employee emp : newManagement.getEmployees().keySet()) {
-                    System.out.println(emp.getName() + " works :" + newManagement.calculateEmployeeWorkDuration(emp.getIdEmployee()));
+                    System.out.println(emp.getName() + " works : " + newManagement.calculateEmployeeWorkDuration(emp.getIdEmployee()) + " hours");
                 }
                 JOptionPane.showMessageDialog(null, "Works Duration Calculated Successfully!");
             }
         });
+
         cbTaskType.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
@@ -199,6 +198,7 @@ public class GUI extends Container {
                 lbStopHr.setVisible(isSimple);
             }
         });
+
         cbModStatus.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
