@@ -22,8 +22,12 @@ public class Utility {
             }
         });
 
-        for(Employee e: filtered){
-            System.out.println(e.getName() + " works " + info.calculateEmployeeWorkDuration(e.getIdEmployee()));
+        if(!filtered.isEmpty()){
+            for(Employee e: filtered){
+                System.out.println(e.getName() + " works " + info.calculateEmployeeWorkDuration(e.getIdEmployee()));
+            }
+        }else {
+            System.out.println("No employees found");
         }
     }
 
@@ -35,10 +39,11 @@ public class Utility {
 
         for(Employee e: employees.keySet()){
             Integer[] taskNumber = new Integer[2];
+            taskNumber[0] = 0; taskNumber[1] = 0;
             List<Task> temp = employees.get(e);
             employeeName = e.getName();
             for(Task task: temp){
-                if(task.getStatusTask().equals("Completed")) {
+                if("Completed".equals(task.getStatusTask())) {
                     taskNumber[0] = taskNumber[0] + 1;
                 }else {
                     taskNumber[1] = taskNumber[1] + 1;
