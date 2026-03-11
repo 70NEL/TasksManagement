@@ -30,10 +30,11 @@ public class Utility {
     public Map<String,Map<String, Integer>> nrOfTasks() {
         TasksManagement newManagement = TasksManagement.getInstance();
         Map<Employee, List<Task>> employees =  newManagement.getEmployees();
-        String employeeName; Integer[] taskNumber = new Integer[2];
         Map<String,Map<String, Integer>> result = new HashMap<>();
+        String employeeName;
 
         for(Employee e: employees.keySet()){
+            Integer[] taskNumber = new Integer[2];
             List<Task> temp = employees.get(e);
             employeeName = e.getName();
             for(Task task: temp){

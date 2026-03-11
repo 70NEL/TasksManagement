@@ -37,11 +37,50 @@ public class GUI extends Container {
     private JLabel lbStopHr;
     private JButton btnCalculateWorkDur;
     private JCheckBox cbModStatus;
+    private JPanel JPanelUtility;
+    private JButton btnFilter;
+    private JButton btnNrOfTasks;
+    private JLabel lbFilter;
+    private JLabel lbNrOfTasks;
 
     public GUI() {
         lbModifyStatus.setVisible(false);
         cbModifyStatus.setVisible(false);
         btnModifyStatus.setVisible(false);
+
+        cbTaskType.addActionListener(new ActionListener() {
+            /**
+             * Invoked when an action occurs.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedItem = (String) cbTaskType.getSelectedItem();
+                boolean isSimple = "Simple".equals(selectedItem);
+
+                tfStartHr.setVisible(isSimple);
+                tfStopHr.setVisible(isSimple);
+                lbStartHr.setVisible(isSimple);
+                lbStopHr.setVisible(isSimple);
+            }
+        });
+
+        cbModStatus.addActionListener(new ActionListener() {
+            /**
+             * Invoked when an action occurs.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                boolean checked = cbModStatus.isSelected();
+
+                lbModifyStatus.setVisible(checked);
+                cbModifyStatus.setVisible(checked);
+                btnModifyStatus.setVisible(checked);
+            }
+        });
 
         btnAddEmployee.addActionListener(new ActionListener() {
             /**
@@ -181,7 +220,7 @@ public class GUI extends Container {
             }
         });
 
-        cbTaskType.addActionListener(new ActionListener() {
+        btnFilter.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
              *
@@ -189,17 +228,13 @@ public class GUI extends Container {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-                String selectedItem = (String) cbTaskType.getSelectedItem();
-                boolean isSimple = "Simple".equals(selectedItem);
-
-                tfStartHr.setVisible(isSimple);
-                tfStopHr.setVisible(isSimple);
-                lbStartHr.setVisible(isSimple);
-                lbStopHr.setVisible(isSimple);
+                TasksManagement newManagement = TasksManagement.getInstance();
+                Utility util = new Utility();
+                util.utilityFilter(newManagement);
             }
         });
 
-        cbModStatus.addActionListener(new ActionListener() {
+        btnNrOfTasks.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
              *
@@ -207,11 +242,16 @@ public class GUI extends Container {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-                boolean checked = cbModStatus.isSelected();
+                Utility util = new Utility();
+                Map<String,Map<String, Integer>> taskMap = util.nrOfTasks();
 
-                lbModifyStatus.setVisible(checked);
-                cbModifyStatus.setVisible(checked);
-                btnModifyStatus.setVisible(checked);
+                for(Map.Entry<String, Map<String, Integer>> entry : taskMap.entrySet()) {
+                    String name = entry.getKey();
+                    int finished =  entry.getValue().get("Completed");
+                    int unFinished =  entry.getValue().get("Uncompleted");
+
+                    System.out.println("Employee name: " + name + " has a total of: " + finished + " ,finished tasks and a total of "  + unFinished + " unfinishedd tasks");
+                }
             }
         });
     }

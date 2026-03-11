@@ -292,6 +292,53 @@
               </component>
             </children>
           </grid>
+          <grid id="775da" binding="JPanelUtility" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <tabbedpane title="Utility"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="b1d70" class="javax.swing.JLabel" binding="lbFilter">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Filter"/>
+                </properties>
+              </component>
+              <component id="17323" class="javax.swing.JLabel" binding="lbNrOfTasks">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="NrOfTasks"/>
+                </properties>
+              </component>
+              <vspacer id="3086d">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="42307" class="javax.swing.JButton" binding="btnFilter">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Filtered Display"/>
+                </properties>
+              </component>
+              <component id="177e5" class="javax.swing.JButton" binding="btnNrOfTasks">
+                <constraints>
+                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Display"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
         </children>
       </tabbedpane>
     </children>
