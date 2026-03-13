@@ -59,9 +59,7 @@ public class TasksManagement implements Serializable {
         for(Employee e: employees.keySet()) {
             if(idEmployee == e.getIdEmployee()){
                 for(Task task: employees.get(e)) {
-                    if("Completed".equals(task.getStatusTask())) {
-                        sum += task.estimateDuration();
-                    }
+                    sum += task.estimateDuration();
                 }
             }
         }

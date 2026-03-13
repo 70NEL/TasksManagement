@@ -3,6 +3,7 @@ package org.example;
 import java.awt.*;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -42,6 +43,7 @@ public class GUI extends Container {
     private JButton btnNrOfTasks;
     private JLabel lbFilter;
     private JLabel lbNrOfTasks;
+    private JTable tableTasks;
 
     public GUI() {
         lbModifyStatus.setVisible(false);
@@ -107,21 +109,43 @@ public class GUI extends Container {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
+                String[] columnNames = {"ID Angajat", "Nume Angajat", "ID Task", "Durată Estimată"};
+
+                DefaultTableModel model = new DefaultTableModel(columnNames, 0) {
+                    @Override
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
+
                 TasksManagement newManagement = TasksManagement.getInstance();
                 Map<Employee, List<Task>> map = newManagement.getEmployees();
-                for(Employee emp : newManagement.getEmployees().keySet()) {
+
+                for (Employee emp : map.keySet()) {
                     List<Task> tasks = map.get(emp);
-                    System.out.print("Name :" + emp.getName() + " with ID: " + emp.getIdEmployee());
-                    int k = 1;
-                    for(Task task : tasks) {
-                        if(k==1) {
-                            System.out.println(" ,was assigned the following tasks :");
-                            k=0;
+
+                    if (tasks.isEmpty()) {
+                        model.addRow(new Object[]{
+                                emp.getIdEmployee(),
+                                emp.getName(),
+                                "Fără task-uri",
+                                "-"
+                        });
+                    } else {
+                        for (Task task : tasks) {
+                            model.addRow(new Object[]{
+                                    emp.getIdEmployee(),
+                                    emp.getName(),
+                                    task.getIdTask(),
+                                    task.estimateDuration() + " ore"
+                            });
                         }
-                        System.out.println("Task ID: " + task.getIdTask() + " | " + "Estimated Duration : " + task.estimateDuration());
                     }
                 }
-                JOptionPane.showMessageDialog(null, "Tasks Displayed Successfully!");
+
+                tableTasks.setModel(model);
+
+                JOptionPane.showMessageDialog(null, "Tabelul a fost actualizat cu succes!");
             }
         });
 

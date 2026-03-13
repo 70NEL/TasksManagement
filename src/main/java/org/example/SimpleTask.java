@@ -2,6 +2,8 @@ package org.example;
 
 import java.io.Serializable;
 
+import static java.lang.Math.abs;
+
 public non-sealed class SimpleTask extends Task implements Serializable {
     private int startHour;
     private int endHour;
@@ -24,6 +26,6 @@ public non-sealed class SimpleTask extends Task implements Serializable {
 
     @Override
     public int estimateDuration() {
-        return getEndHour() - getStartHour();
+        return abs(getEndHour() - getStartHour());
     }
 }
