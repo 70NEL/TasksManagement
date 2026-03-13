@@ -46,6 +46,7 @@ public class GUI extends Container {
     private JTable tableTasks;
     private JTextField tfParentTaskID;
     private JLabel lbParentTaskID;
+    private JTable tableWorkDuration;
 
     public GUI() {
         lbModifyStatus.setVisible(false);
@@ -130,7 +131,7 @@ public class GUI extends Container {
                         model.addRow(new Object[]{
                                 emp.getIdEmployee(),
                                 emp.getName(),
-                                "Fără task-uri",
+                                "No tasks",
                                 "-"
                         });
                     } else {
@@ -139,7 +140,7 @@ public class GUI extends Container {
                                     emp.getIdEmployee(),
                                     emp.getName(),
                                     task.getIdTask(),
-                                    task.estimateDuration() + " ore"
+                                    task.estimateDuration() + " hrs"
                             });
                         }
                     }
@@ -257,11 +258,44 @@ public class GUI extends Container {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
+                String[] columnNames = {"Employee ID", "Employee Name", "Tasks ID's", "Total Estimated Duration"};
+
+                DefaultTableModel model = new DefaultTableModel(columnNames, 0) {
+                    @Override
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
+
                 TasksManagement newManagement = TasksManagement.getInstance();
-                for(Employee emp : newManagement.getEmployees().keySet()) {
-                    System.out.println(emp.getName() + " works : " + newManagement.calculateEmployeeWorkDuration(emp.getIdEmployee()) + " hours");
+                Map<Employee, List<Task>> employeesMap = newManagement.getEmployees();
+
+                for (Employee emp : employeesMap.keySet()) {
+                    List<Task> tasks = employeesMap.get(emp);
+
+                    StringBuilder taskIds = new StringBuilder();
+                    for (int i = 0; i < tasks.size(); i++) {
+                        taskIds.append(tasks.get(i).getIdTask());
+                        if (i < tasks.size() - 1) {
+                            taskIds.append(", ");
+                        }
+                    }
+
+                    String idsDisplay = !taskIds.isEmpty() ? taskIds.toString() : "No tasks";
+
+                    int totalDuration = newManagement.calculateEmployeeWorkDuration(emp.getIdEmployee());
+
+                    model.addRow(new Object[]{
+                            emp.getIdEmployee(),
+                            emp.getName(),
+                            idsDisplay,
+                            totalDuration + " hours"
+                    });
                 }
-                JOptionPane.showMessageDialog(null, "Works Duration Calculated Successfully!");
+
+                tableWorkDuration.setModel(model);
+
+                JOptionPane.showMessageDialog(null, "Works Duration Calculated and Displayed Successfully!");
             }
         });
 
