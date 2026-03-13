@@ -26,6 +26,12 @@ public non-sealed class SimpleTask extends Task implements Serializable {
 
     @Override
     public int estimateDuration() {
-        return abs(getEndHour() - getStartHour());
+        if(startHour == endHour) {
+            return 0;
+        }else if(startHour < endHour) {
+            return getEndHour() - getStartHour();
+        }else {
+            return (24-getStartHour()) + getEndHour();
+        }
     }
 }

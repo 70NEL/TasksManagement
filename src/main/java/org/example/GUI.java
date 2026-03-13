@@ -44,6 +44,8 @@ public class GUI extends Container {
     private JLabel lbFilter;
     private JLabel lbNrOfTasks;
     private JTable tableTasks;
+    private JTextField tfParentTaskID;
+    private JLabel lbParentTaskID;
 
     public GUI() {
         lbModifyStatus.setVisible(false);
@@ -157,25 +159,44 @@ public class GUI extends Container {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-                TasksManagement newManagement = TasksManagement.getInstance();
-                Task tsk = null;
-                if(cbTaskType.getSelectedItem() == "Complex") {
-                    tsk = new ComplexTask();
-                }else {
-                    SimpleTask tk = new SimpleTask();
-                    tk.setStartHour(Integer.parseInt(tfStartHr.getText()));
-                    tk.setEndHour(Integer.parseInt(tfStopHr.getText()));
-                    tsk = tk;
-                }
+                try{
+                    TasksManagement newManagement = TasksManagement.getInstance();
+                    Task tsk = null;
+                    int parentID = 0;
 
-                if(tsk != null) {
-                    tsk.setIdTask(Integer.parseInt(tfTaskID.getText()));
-                    boolean isDone = newManagement.addTask(tsk);
-                    if(isDone) {
-                        JOptionPane.showMessageDialog(null, "Task Added Successfully!");
+                    if("Complex".equals(cbTaskType.getSelectedItem())) {
+                        tsk = new ComplexTask();
                     }else {
-                        JOptionPane.showMessageDialog(null, "Task Added Failed!");
+                        SimpleTask tk = new SimpleTask();
+                        tk.setStartHour(Integer.parseInt(tfStartHr.getText()));
+                        tk.setEndHour(Integer.parseInt(tfStopHr.getText()));
+                        tsk = tk;
                     }
+
+                    if(tsk != null) {
+                        tsk.setIdTask(Integer.parseInt(tfTaskID.getText()));
+                        boolean isDone = newManagement.addTask(tsk);
+
+                        if(!tfParentTaskID.getText().isEmpty()) {
+                            parentID = Integer.parseInt(tfParentTaskID.getText());
+                            Task parentTaskPot = newManagement.findTaskById(parentID);
+
+                            if(parentTaskPot instanceof  ComplexTask) {
+                                ComplexTask parentTask = (ComplexTask) parentTaskPot;
+                                parentTask.addTask(tsk);
+                            }else {
+                                JOptionPane.showMessageDialog(null, "The selected parent does not exist or is a simple task!");
+                            }
+                        }
+
+                        if(isDone) {
+                            JOptionPane.showMessageDialog(null, "Task Added Successfully!");
+                        }else {
+                            JOptionPane.showMessageDialog(null, "Task Added Failed, The Id already Exists!");
+                        }
+                    }
+                }catch(NumberFormatException ex){
+                    JOptionPane.showMessageDialog(null, "Write a valid task id for the parent complex task!");
                 }
             }
         });
