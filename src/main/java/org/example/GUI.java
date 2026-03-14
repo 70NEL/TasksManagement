@@ -98,11 +98,19 @@ public class GUI extends Container {
             @Override
             public void actionPerformed(ActionEvent e) {
                 TasksManagement newManagement = TasksManagement.getInstance();
+
+
                 Employee emp = new Employee();
                 emp.setName(tfEmployeeName.getText());
                 emp.setIdEmployee(Integer.parseInt(tfEmployeeID.getText()));
-                newManagement.addEmployee(emp);
-                JOptionPane.showMessageDialog(null, "Employee Added Successfully!");
+
+                if(newManagement.findEmployeeById(Integer.parseInt(tfEmployeeID.getText())) != null &&
+                        newManagement.findEmployeeById(Integer.parseInt(tfEmployeeID.getText())).getIdEmployee() == emp.getIdEmployee()) {
+                    JOptionPane.showMessageDialog(null, "Employee with this ID already exists!");
+                }else {
+                    newManagement.addEmployee(emp);
+                    JOptionPane.showMessageDialog(null, "Employee Added Successfully!");
+                }
             }
         });
 

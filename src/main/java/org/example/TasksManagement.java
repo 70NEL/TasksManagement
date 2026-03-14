@@ -75,6 +75,15 @@ public class TasksManagement implements Serializable {
         return null;
     }
 
+    public Employee findEmployeeById(int idEmployee) {
+        for(Employee e: employees.keySet()) {
+            if(idEmployee == e.getIdEmployee()) {
+                return e;
+            }
+        }
+        return null;
+    }
+
     public boolean modifyTaskStatus(int idEmployee, int idTask) {
         for(Employee e: employees.keySet()) {
             if(idEmployee == e.getIdEmployee()){
