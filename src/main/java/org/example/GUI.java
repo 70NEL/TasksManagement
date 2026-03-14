@@ -47,6 +47,8 @@ public class GUI extends Container {
     private JTextField tfParentTaskID;
     private JLabel lbParentTaskID;
     private JTable tableWorkDuration;
+    private JTable tableFilter;
+    private JTable tableNrTasks;
 
     public GUI() {
         lbModifyStatus.setVisible(false);
@@ -309,7 +311,31 @@ public class GUI extends Container {
             public void actionPerformed(ActionEvent e) {
                 TasksManagement newManagement = TasksManagement.getInstance();
                 Utility util = new Utility();
-                util.utilityFilter(newManagement);
+                List<Employee> filtered = util.utilityFilter(newManagement);
+
+                String[] columnNames = {"Employee Name", "Work Duration"};
+                DefaultTableModel model = new DefaultTableModel(columnNames, 0) {
+                    @Override
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
+
+                if(!filtered.isEmpty()){
+                    for(Employee emp: filtered){
+                        model.addRow(new Object[]{
+                                emp.getName(),
+                                newManagement.calculateEmployeeWorkDuration(emp.getIdEmployee())
+                        });
+                    }
+                }else {
+                    model.addRow(new Object[]{
+                            "No employees respecting the filter found",
+                            "-----------------------------------"
+                    });
+                }
+
+                tableFilter.setModel(model);
             }
         });
 
@@ -324,13 +350,36 @@ public class GUI extends Container {
                 Utility util = new Utility();
                 Map<String,Map<String, Integer>> taskMap = util.nrOfTasks();
 
-                for(Map.Entry<String, Map<String, Integer>> entry : taskMap.entrySet()) {
-                    String name = entry.getKey();
-                    int finished =  entry.getValue().get("Completed");
-                    int unFinished =  entry.getValue().get("Uncompleted");
+                String[] columnNames = {"Employee Name", "Completed Task", "Uncompleted Task"};
+                DefaultTableModel model = new DefaultTableModel(columnNames, 0) {
+                    @Override
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
 
-                    System.out.println("Employee name: " + name + " has a total of: " + finished + " ,finished tasks and a total of "  + unFinished + " unfinishedd tasks");
+                if(!taskMap.isEmpty()){
+                    for(Map.Entry<String, Map<String, Integer>> entry : taskMap.entrySet()) {
+                        String name = entry.getKey();
+                        int finished =  entry.getValue().get("Completed");
+                        int unFinished =  entry.getValue().get("Uncompleted");
+
+                        model.addRow(new Object[]{
+                                name,
+                                finished,
+                                unFinished
+                        });
+
+                    }
+                }else {
+                    model.addRow(new Object[]{
+                            "No employees respecting the filter found",
+                            "----------------------------------------",
+                            "----------------------------------------"
+                    });
                 }
+
+                tableNrTasks.setModel(model);
             }
         });
     }

@@ -3,7 +3,7 @@ package org.example;
 import java.util.*;
 
 public class Utility {
-    public void utilityFilter(TasksManagement info) {
+    public List<Employee> utilityFilter(TasksManagement info) {
         Map<Employee, List<Task>> data = info.getEmployees();
         List<Employee> filtered = new ArrayList<>();
 
@@ -22,13 +22,7 @@ public class Utility {
             }
         });
 
-        if(!filtered.isEmpty()){
-            for(Employee e: filtered){
-                System.out.println(e.getName() + " works " + info.calculateEmployeeWorkDuration(e.getIdEmployee()));
-            }
-        }else {
-            System.out.println("No employees found");
-        }
+        return filtered;
     }
 
     public Map<String,Map<String, Integer>> nrOfTasks() {
