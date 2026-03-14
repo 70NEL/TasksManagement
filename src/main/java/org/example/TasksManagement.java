@@ -8,7 +8,7 @@ public class TasksManagement implements Serializable {
     private Map<Employee, List<Task>> employees;
     private List<Task> tasks = new ArrayList<>();
 
-    public TasksManagement() {
+    private TasksManagement() {
         employees = new HashMap<>();
     }
 

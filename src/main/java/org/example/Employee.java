@@ -28,6 +28,7 @@ public class Employee implements Serializable {
         if (this == obj) {
             return true;
         }
+
         if(obj == null || this.getClass() != obj.getClass()) {
             return false;
         }

@@ -114,7 +114,7 @@ public class GUI extends Container {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-                String[] columnNames = {"ID Angajat", "Nume Angajat", "ID Task", "Durată Estimată"};
+                String[] columnNames = {"Employee ID", "Employee Name", "Task ID", "Estimated Duration"};
 
                 DefaultTableModel model = new DefaultTableModel(columnNames, 0) {
                     @Override
@@ -150,7 +150,7 @@ public class GUI extends Container {
 
                 tableTasks.setModel(model);
 
-                JOptionPane.showMessageDialog(null, "Tabelul a fost actualizat cu succes!");
+                JOptionPane.showMessageDialog(null, "Tabel succsefully updated!");
             }
         });
 
