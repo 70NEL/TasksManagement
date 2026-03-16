@@ -1,4 +1,4 @@
-package org.example;
+package Data_Model;
 
 import java.io.Serializable;
 

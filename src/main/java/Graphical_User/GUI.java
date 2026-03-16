@@ -1,4 +1,11 @@
-package org.example;
+package Graphical_User;
+
+import Business_Logic.TasksManagement;
+import Business_Logic.Utility;
+import Data_Model.ComplexTask;
+import Data_Model.Employee;
+import Data_Model.SimpleTask;
+import Data_Model.Task;
 
 import java.awt.*;
 import java.util.*;
@@ -10,7 +17,7 @@ import java.util.List;
 
 public class GUI extends Container {
     private JTabbedPane tabbedPane;
-    JPanel panel1;
+    public JPanel panel1;
     private JPanel JPanelEmployee;
     private JTextField tfEmployeeName;
     private JTextField tfEmployeeID;
