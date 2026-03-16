@@ -1,6 +1,8 @@
-package org.example;
+package Data_Model;
 
 import java.io.Serializable;
+
+import static java.lang.Math.abs;
 
 public non-sealed class SimpleTask extends Task implements Serializable {
     private int startHour;
@@ -24,6 +26,12 @@ public non-sealed class SimpleTask extends Task implements Serializable {
 
     @Override
     public int estimateDuration() {
-        return getEndHour() - getStartHour();
+        if(startHour == endHour) {
+            return 0;
+        }else if(startHour < endHour) {
+            return getEndHour() - getStartHour();
+        }else {
+            return (24-getStartHour()) + getEndHour();
+        }
     }
 }

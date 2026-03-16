@@ -1,4 +1,4 @@
-package org.example;
+package Data_Model;
 
 import java.io.Serializable;
 import java.util.*;
@@ -18,7 +18,7 @@ public non-sealed class ComplexTask extends Task implements Serializable {
     public int estimateDuration() {
         int sum = 0;
         for(Task t: subTasks) {
-            sum =+ t.estimateDuration();
+            sum += t.estimateDuration();
         }
         return sum;
     }

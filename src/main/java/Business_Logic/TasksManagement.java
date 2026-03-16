@@ -1,4 +1,7 @@
-package org.example;
+package Business_Logic;
+
+import Data_Model.Employee;
+import Data_Model.Task;
 
 import java.io.Serializable;
 import java.util.*;
@@ -8,7 +11,7 @@ public class TasksManagement implements Serializable {
     private Map<Employee, List<Task>> employees;
     private List<Task> tasks = new ArrayList<>();
 
-    public TasksManagement() {
+    private TasksManagement() {
         employees = new HashMap<>();
     }
 
@@ -59,9 +62,7 @@ public class TasksManagement implements Serializable {
         for(Employee e: employees.keySet()) {
             if(idEmployee == e.getIdEmployee()){
                 for(Task task: employees.get(e)) {
-                    if("Completed".equals(task.getStatusTask())) {
-                        sum += task.estimateDuration();
-                    }
+                    sum += task.estimateDuration();
                 }
             }
         }
@@ -72,6 +73,15 @@ public class TasksManagement implements Serializable {
         for(Task tsk: tasks) {
             if(tsk.getIdTask() == idTask) {
                 return tsk;
+            }
+        }
+        return null;
+    }
+
+    public Employee findEmployeeById(int idEmployee) {
+        for(Employee e: employees.keySet()) {
+            if(idEmployee == e.getIdEmployee()) {
+                return e;
             }
         }
         return null;

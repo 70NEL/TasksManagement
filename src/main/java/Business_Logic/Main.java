@@ -1,4 +1,6 @@
-package org.example;
+package Business_Logic;
+
+import Graphical_User.GUI;
 
 import javax.swing.*;
 
