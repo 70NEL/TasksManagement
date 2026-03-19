@@ -15,6 +15,7 @@ public class Utility {
                 filtered.add(e);
             }
         }
+        // poate alta structura de date, redu nr de apeluri, ce e la linia 14 e suficient de apeluri la calculate
 
         filtered.sort(new Comparator<Employee>() {
             @Override
