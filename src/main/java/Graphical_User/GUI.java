@@ -26,7 +26,6 @@ public class GUI extends Container {
     private JButton btnAddEmployee;
     private JPanel JPanelAssignTasks;
     private JTextField tfEmployeeIDTask;
-    private JLabel LabelEmployeeIDTasks;
     private JTextField tfTaskIDTask;
     private JButton btnAssign;
     private JPanel JPanelAddTask;
@@ -56,6 +55,8 @@ public class GUI extends Container {
     private JTable tableWorkDuration;
     private JTable tableFilter;
     private JTable tableNrTasks;
+    private JTree trTasks;
+    private JTable tbEmployees;
 
     public GUI() {
         lbModifyStatus.setVisible(false);
