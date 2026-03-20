@@ -26,6 +26,10 @@ public class TasksManagement implements Serializable {
         return this.employees;
     }
 
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
     public void addEmployee(Employee employee) {
         if(!employees.containsKey(employee)) {
             employees.put(employee, new ArrayList<>());

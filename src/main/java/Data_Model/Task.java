@@ -3,6 +3,7 @@ package Data_Model;
 import java.io.Serializable;
 
 public sealed abstract class Task implements Serializable permits SimpleTask, ComplexTask {
+    private int parentId = -1;
     private int idTask;
     private String statusTask;
 
@@ -14,6 +15,14 @@ public sealed abstract class Task implements Serializable permits SimpleTask, Co
         this.statusTask = statusTask;
     }
 
+    public int getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(int parentId) {
+        this.parentId = parentId;
+    }
+
     public int getIdTask() {
         return idTask;
     }
@@ -23,4 +32,9 @@ public sealed abstract class Task implements Serializable permits SimpleTask, Co
     }
 
     public abstract int estimateDuration();
+
+    @Override
+    public String toString() {
+        return "Task ID: " + idTask  + (this instanceof ComplexTask ? " Complex" : " Simple");
+    }
 }

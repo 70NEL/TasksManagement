@@ -6,6 +6,10 @@ import java.util.*;
 public non-sealed class ComplexTask extends Task implements Serializable {
     private List<Task> subTasks = new ArrayList<>();
 
+    public List<Task> getSubTasks() {
+        return subTasks;
+    }
+
     public void addTask(Task task) {
         subTasks.add(task);
     }
