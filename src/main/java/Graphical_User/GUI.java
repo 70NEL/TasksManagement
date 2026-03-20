@@ -53,7 +53,6 @@ public class GUI extends Container {
     private JButton btnNrOfTasks;
     private JLabel lbFilter;
     private JLabel lbNrOfTasks;
-    private JTable tableTasks;
     private JTextField tfParentTaskID;
     private JLabel lbParentTaskID;
     private JTable tableWorkDuration;
@@ -178,54 +177,6 @@ public class GUI extends Container {
             }
         });
 
-        btnDisplayTasks.addActionListener(new ActionListener() {
-            /**
-             * Invoked when an action occurs.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String[] columnNames = {"Employee ID", "Employee Name", "Task ID", "Estimated Duration"};
-
-                DefaultTableModel model = new DefaultTableModel(columnNames, 0) {
-                    @Override
-                    public boolean isCellEditable(int row, int column) {
-                        return false;
-                    }
-                };
-
-                TasksManagement newManagement = TasksManagement.getInstance();
-                Map<Employee, List<Task>> map = newManagement.getEmployees();
-
-                for (Employee emp : map.keySet()) {
-                    List<Task> tasks = map.get(emp);
-
-                    if (tasks.isEmpty()) {
-                        model.addRow(new Object[]{
-                                emp.getIdEmployee(),
-                                emp.getName(),
-                                "No tasks",
-                                "-"
-                        });
-                    } else {
-                        for (Task task : tasks) {
-                            model.addRow(new Object[]{
-                                    emp.getIdEmployee(),
-                                    emp.getName(),
-                                    task.getIdTask(),
-                                    task.estimateDuration() + " hrs"
-                            });
-                        }
-                    }
-                }
-
-                tableTasks.setModel(model);
-
-                JOptionPane.showMessageDialog(null, "Tabel succsefully updated!");
-            }
-        });
-
         btnAddTask.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
@@ -323,15 +274,21 @@ public class GUI extends Container {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
+                int selectedRow = tbEmployees.getSelectedRow();
+                DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) trTasks.getLastSelectedPathComponent();
+                if(selectedRow == -1 || selectedNode == null ||  selectedNode.isRoot()) {
+                    JOptionPane.showMessageDialog(null, "Please select an employee and/or a task!");
+                }
+
+                int empId = (int) tbEmployees.getValueAt(selectedRow, 0);
+                Task selectedTask = (Task) selectedNode.getUserObject();
+                int taskId = (int) selectedTask.getIdTask();
                 TasksManagement newManagement = TasksManagement.getInstance();
-                Map<Employee, List<Task>> employees = newManagement.getEmployees();
-                int empID = Integer.parseInt(tfEmployeeIDTask.getText());
-                int taskID = Integer.parseInt(tfTaskIDTask.getText());
-                boolean isDone = newManagement.modifyTaskStatus(empID, taskID);
-                if(isDone == false) {
-                    JOptionPane.showMessageDialog(null, "Task Status WAS NOT Modified Successfully!");
+                boolean isDone = newManagement.modifyTaskStatus(empId, taskId);
+                if(!isDone) {
+                    JOptionPane.showMessageDialog(null, "Task WAS NOT Modified Successfully!");
                 }else {
-                    JOptionPane.showMessageDialog(null, "Task Status was modified Successfully!");
+                    JOptionPane.showMessageDialog(null, "Task Modified Successfully!");
                 }
             }
         });
