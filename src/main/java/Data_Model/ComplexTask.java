@@ -3,7 +3,7 @@ package Data_Model;
 import java.io.Serializable;
 import java.util.*;
 
-public non-sealed class ComplexTask extends Task implements Serializable {
+public non-sealed class ComplexTask extends Task{
     private List<Task> subTasks = new ArrayList<>();
 
     public List<Task> getSubTasks() {

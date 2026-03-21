@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import static java.lang.Math.abs;
 
-public non-sealed class SimpleTask extends Task implements Serializable {
+public non-sealed class SimpleTask extends Task{
     private int startHour;
     private int endHour;
 
