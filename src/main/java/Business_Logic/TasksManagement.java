@@ -49,19 +49,6 @@ public class TasksManagement implements Serializable {
         return false;
     }
 
-    public boolean removeTask(Task task) {
-        if(!tasks.contains(task)) {
-            for(Task t: tasks) {
-                if(t.getIdTask() == task.getIdTask()) {
-                    return false;
-                }
-            }
-            tasks.remove(task);
-            return true;
-        }
-        return false;
-    }
-
     public boolean assignTaskToEmployee(int idEmployee, Task task) {
         if(tasks.contains(task)) {
             for (Employee employee : employees.keySet()) {
