@@ -290,7 +290,9 @@ public class GUI extends Container {
                 Task selectedTask = (Task) selectedNode.getUserObject();
                 int taskId = (int) selectedTask.getIdTask();
                 TasksManagement newManagement = TasksManagement.getInstance();
-                boolean isDone = newManagement.modifyTaskStatus(empId, taskId);
+                String newStatus = (String) cbModifyStatus.getSelectedItem();
+                boolean isDone = newManagement.modifyTaskStatus(empId, taskId, newStatus);
+
                 if(!isDone) {
                     JOptionPane.showMessageDialog(null, "Task WAS NOT Modified Successfully!");
                 }else {

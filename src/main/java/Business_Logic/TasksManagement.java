@@ -91,16 +91,12 @@ public class TasksManagement implements Serializable {
         return null;
     }
 
-    public boolean modifyTaskStatus(int idEmployee, int idTask) {
+    public boolean modifyTaskStatus(int idEmployee, int idTask, String status) {
         for(Employee e: employees.keySet()) {
             if(idEmployee == e.getIdEmployee()){
                 for(Task task: employees.get(e)) {
                     if(task.getIdTask() == idTask) {
-                        if("Completed".equals(task.getStatusTask())) {
-                            task.setStatusTask("Uncompleted");
-                        }else {
-                            task.setStatusTask("Completed");
-                        }
+                        task.setStatusTask(status);
                         return true;
                     }
                 }
