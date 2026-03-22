@@ -209,6 +209,7 @@ public class GUI extends Container {
                         if(parentTask != null) {
                             if(parentTask instanceof ComplexTask) {
                                 ((ComplexTask) parentTask).addTask(tsk);
+                                tsk.setParentId(parentID);
                                 newManagement.addTask(tsk);
                                 JOptionPane.showMessageDialog(null, "Task Added Successfully!");
                             }else {
