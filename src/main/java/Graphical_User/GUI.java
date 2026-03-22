@@ -199,31 +199,36 @@ public class GUI extends Container {
                         tsk = tk;
                     }
 
-                    if(tsk != null) {
-                        tsk.setIdTask(Integer.parseInt(tfTaskID.getText()));
-                        boolean isDone = newManagement.addTask(tsk);
+                    tsk.setIdTask(Integer.parseInt(tfTaskID.getText()));
+                    String parentIDText = tfParentTaskID.getText();
 
-                        if(!tfParentTaskID.getText().isEmpty()) {
-                            parentID = Integer.parseInt(tfParentTaskID.getText());
-                            Task parentTaskPot = newManagement.findTaskById(parentID);
-                            tsk.setParentId(parentID);
-                            if(parentTaskPot instanceof  ComplexTask) {
-                                ComplexTask parentTask = (ComplexTask) parentTaskPot;
-                                parentTask.addTask(tsk);
+                    if(!parentIDText.isEmpty()) {
+                        parentID = Integer.parseInt(parentIDText);
+                        Task parentTask = newManagement.findTaskById(parentID);
+
+                        if(parentTask != null) {
+                            if(parentTask instanceof ComplexTask) {
+                                ((ComplexTask) parentTask).addTask(tsk);
+                                newManagement.addTask(tsk);
+                                JOptionPane.showMessageDialog(null, "Task Added Successfully!");
                             }else {
-                                JOptionPane.showMessageDialog(null, "The selected parent does not exist or is a simple task!");
+                                JOptionPane.showMessageDialog(null, "Tasks can't have a simple task as parent!");
                             }
+                        }else {
+                            JOptionPane.showMessageDialog(null, "The Task ID is invalid!");
                         }
+                    }else {
+                        boolean isAdded = newManagement.addTask(tsk);
 
-                        if(isDone) {
+                        if(isAdded) {
                             JOptionPane.showMessageDialog(null, "Task Added Successfully!");
                         }else {
-                            JOptionPane.showMessageDialog(null, "Task Added Failed, The Id already Exists!");
+                            JOptionPane.showMessageDialog(null, "Task Already Exists!");
                         }
-
-                        displayTaskTree();
-                        trTasks.updateUI();
                     }
+
+                    displayTaskTree();
+                    trTasks.updateUI();
                 }catch(NumberFormatException ex){
                     JOptionPane.showMessageDialog(null, "Write a valid task id for the parent complex task!");
                 }
