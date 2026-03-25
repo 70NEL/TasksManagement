@@ -1,7 +1,7 @@
 package businesslogic;
 
 import gui.GUI;
-import serialization.SerializationOperations;
+import dataaccess.SerializationOperations;
 
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
