@@ -5,7 +5,7 @@ import java.io.Serializable;
 public sealed abstract class Task implements Serializable permits SimpleTask, ComplexTask {
     private int parentId = -1;
     private int idTask;
-    private String statusTask;
+    private String statusTask = "Uncompleted";
 
     public String getStatusTask() {
         return statusTask;

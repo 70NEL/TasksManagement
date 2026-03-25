@@ -8,10 +8,15 @@ import java.util.*;
 public class Utility {
     public List<Employee> utilityFilter(TasksManagement info) {
         Map<Employee, List<Task>> data = info.getEmployees();
-        List<Employee> filtered = new ArrayList<>();
+        Map<Employee, Integer> timeMap = new HashMap<>();
 
         for(Employee emp: data.keySet()){
-            if(info.calculateEmployeeWorkDuration(emp.getIdEmployee()) > 40) {
+            timeMap.put(emp, info.calculateEmployeeWorkDuration(emp.getIdEmployee()));
+        }
+
+        ArrayList<Employee> filtered = new ArrayList<>();
+        for(Employee emp: data.keySet()){
+            if(timeMap.get(emp) > 40){
                 filtered.add(emp);
             }
         }
@@ -19,9 +24,7 @@ public class Utility {
         filtered.sort(new Comparator<Employee>() {
             @Override
             public int compare(Employee emp1, Employee emp2) {
-                int d1 = info.calculateEmployeeWorkDuration(emp1.getIdEmployee());
-                int d2 = info.calculateEmployeeWorkDuration(emp2.getIdEmployee());
-                return Integer.compare(d1, d2);
+                return Integer.compare(timeMap.get(emp1), timeMap.get(emp2));
             }
         });
 
@@ -34,11 +37,11 @@ public class Utility {
         Map<String,Map<String, Integer>> result = new HashMap<>();
         String employeeName;
 
-        for(Employee e: employees.keySet()){
+        for(Employee emp: employees.keySet()){
             Integer[] taskNumber = new Integer[2];
             taskNumber[0] = 0; taskNumber[1] = 0;
-            List<Task> temp = employees.get(e);
-            employeeName = e.getName();
+            List<Task> temp = employees.get(emp);
+            employeeName = emp.getName();
             for(Task task: temp){
                 if("Completed".equals(task.getStatusTask())) {
                     taskNumber[0] = taskNumber[0] + 1;
