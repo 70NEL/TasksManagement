@@ -1,19 +1,22 @@
-package Graphical_User;
+package gui;
 
-import Business_Logic.TasksManagement;
-import Business_Logic.Utility;
-import Data_Model.ComplexTask;
-import Data_Model.Employee;
-import Data_Model.SimpleTask;
-import Data_Model.Task;
+import businesslogic.TasksManagement;
+import businesslogic.Utility;
+import datamodel.ComplexTask;
+import datamodel.Employee;
+import datamodel.SimpleTask;
+import datamodel.Task;
 
 import java.awt.*;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultTreeModel;
 
 public class GUI extends Container {
     private JTabbedPane tabbedPane;
@@ -26,7 +29,6 @@ public class GUI extends Container {
     private JButton btnAddEmployee;
     private JPanel JPanelAssignTasks;
     private JTextField tfEmployeeIDTask;
-    private JLabel LabelEmployeeIDTasks;
     private JTextField tfTaskIDTask;
     private JButton btnAssign;
     private JPanel JPanelAddTask;
@@ -50,12 +52,62 @@ public class GUI extends Container {
     private JButton btnNrOfTasks;
     private JLabel lbFilter;
     private JLabel lbNrOfTasks;
-    private JTable tableTasks;
     private JTextField tfParentTaskID;
     private JLabel lbParentTaskID;
     private JTable tableWorkDuration;
     private JTable tableFilter;
     private JTable tableNrTasks;
+    private JTree trTasks;
+    private JTable tbEmployees;
+
+    private void displayEmployeeTable() {
+        String[] columnNames = {"ID Employee", "Employee Name"};
+        TasksManagement newManagement = TasksManagement.getInstance();
+
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        for(Employee emp : newManagement.getEmployees().keySet()) {
+            model.addRow(new Object[]{
+                    emp.getIdEmployee(),
+                    emp.getName()
+            });
+        }
+
+        tbEmployees.setModel(model);
+    }
+
+    private DefaultMutableTreeNode createTreeNode(Task tsk) {
+        DefaultMutableTreeNode node = new DefaultMutableTreeNode(tsk);
+
+        if(tsk instanceof ComplexTask) {
+            ComplexTask complexTask = (ComplexTask) tsk;
+            for(Task subTask: complexTask.getSubTasks()) {
+                node.add(createTreeNode(subTask));
+            }
+        }
+
+        return node;
+    }
+
+    private void displayTaskTree() {
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode("Tasks");
+
+        TasksManagement newManagement = TasksManagement.getInstance();
+
+        for(Task task : newManagement.getTasks()) {
+            if(task.getParentId() == -1) {
+                root.add(createTreeNode(task));
+            }
+        }
+
+        DefaultTreeModel model = new DefaultTreeModel(root);
+        trTasks.setModel(model);
+    }
 
     public GUI() {
         lbModifyStatus.setVisible(false);
@@ -118,54 +170,9 @@ public class GUI extends Container {
                     newManagement.addEmployee(emp);
                     JOptionPane.showMessageDialog(null, "Employee Added Successfully!");
                 }
-            }
-        });
 
-        btnDisplayTasks.addActionListener(new ActionListener() {
-            /**
-             * Invoked when an action occurs.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String[] columnNames = {"Employee ID", "Employee Name", "Task ID", "Estimated Duration"};
-
-                DefaultTableModel model = new DefaultTableModel(columnNames, 0) {
-                    @Override
-                    public boolean isCellEditable(int row, int column) {
-                        return false;
-                    }
-                };
-
-                TasksManagement newManagement = TasksManagement.getInstance();
-                Map<Employee, List<Task>> map = newManagement.getEmployees();
-
-                for (Employee emp : map.keySet()) {
-                    List<Task> tasks = map.get(emp);
-
-                    if (tasks.isEmpty()) {
-                        model.addRow(new Object[]{
-                                emp.getIdEmployee(),
-                                emp.getName(),
-                                "No tasks",
-                                "-"
-                        });
-                    } else {
-                        for (Task task : tasks) {
-                            model.addRow(new Object[]{
-                                    emp.getIdEmployee(),
-                                    emp.getName(),
-                                    task.getIdTask(),
-                                    task.estimateDuration() + " hrs"
-                            });
-                        }
-                    }
-                }
-
-                tableTasks.setModel(model);
-
-                JOptionPane.showMessageDialog(null, "Tabel succsefully updated!");
+                displayEmployeeTable();
+                tbEmployees.updateUI();
             }
         });
 
@@ -180,39 +187,59 @@ public class GUI extends Container {
                 try{
                     TasksManagement newManagement = TasksManagement.getInstance();
                     Task tsk = null;
-                    int parentID = 0;
+                    boolean tskExisted = false;
+                    String parentIDText = tfParentTaskID.getText();
+                    tsk = newManagement.findTaskById(Integer.parseInt(tfTaskID.getText()));
 
-                    if("Complex".equals(cbTaskType.getSelectedItem())) {
-                        tsk = new ComplexTask();
+                    if(tsk == null) {
+                        if("Complex".equals(cbTaskType.getSelectedItem())) {
+                            tsk = new ComplexTask();
+                        }else {
+                            SimpleTask tk = new SimpleTask();
+                            tk.setStartHour(Integer.parseInt(tfStartHr.getText()));
+                            tk.setEndHour(Integer.parseInt(tfStopHr.getText()));
+                            tsk = tk;
+                        }
+                        tsk.setIdTask(Integer.parseInt(tfTaskID.getText()));
                     }else {
-                        SimpleTask tk = new SimpleTask();
-                        tk.setStartHour(Integer.parseInt(tfStartHr.getText()));
-                        tk.setEndHour(Integer.parseInt(tfStopHr.getText()));
-                        tsk = tk;
+                        tskExisted = true;
                     }
 
-                    if(tsk != null) {
-                        tsk.setIdTask(Integer.parseInt(tfTaskID.getText()));
-                        boolean isDone = newManagement.addTask(tsk);
+                    if(!parentIDText.isEmpty()) {
+                        int parentID = Integer.parseInt(parentIDText);
+                        Task parentTask = newManagement.findTaskById(parentID);
 
-                        if(!tfParentTaskID.getText().isEmpty()) {
-                            parentID = Integer.parseInt(tfParentTaskID.getText());
-                            Task parentTaskPot = newManagement.findTaskById(parentID);
-
-                            if(parentTaskPot instanceof  ComplexTask) {
-                                ComplexTask parentTask = (ComplexTask) parentTaskPot;
-                                parentTask.addTask(tsk);
+                        if(parentTask != null) {
+                            if(parentTask instanceof ComplexTask) {
+                                if(tsk instanceof ComplexTask &&
+                                        (((ComplexTask) tsk).isAncestorOf(parentTask) || ((ComplexTask) parentTask).getSubTasks().contains(tsk))) {
+                                    JOptionPane.showMessageDialog(null, "A task cant appear twice in a single branch !!");
+                                }else {
+                                    ((ComplexTask) parentTask).addTask(tsk);
+                                    if(!tskExisted) {
+                                        tsk.setParentId(parentID);
+                                        newManagement.addTask(tsk);
+                                    }
+                                    JOptionPane.showMessageDialog(null, "Task Added Successfully!");
+                                }
                             }else {
-                                JOptionPane.showMessageDialog(null, "The selected parent does not exist or is a simple task!");
+                                JOptionPane.showMessageDialog(null, "Tasks can't have a simple task as parent!");
                             }
+                        }else {
+                            JOptionPane.showMessageDialog(null, "The Task ID for the Parent is invalid!");
                         }
+                    }else {
+                        boolean isAdded = newManagement.addTask(tsk);
 
-                        if(isDone) {
+                        if(isAdded) {
                             JOptionPane.showMessageDialog(null, "Task Added Successfully!");
                         }else {
-                            JOptionPane.showMessageDialog(null, "Task Added Failed, The Id already Exists!");
+                            JOptionPane.showMessageDialog(null, "Task Already Exists!");
                         }
                     }
+
+                    displayTaskTree();
+                    trTasks.updateUI();
                 }catch(NumberFormatException ex){
                     JOptionPane.showMessageDialog(null, "Write a valid task id for the parent complex task!");
                 }
@@ -227,20 +254,29 @@ public class GUI extends Container {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-                TasksManagement newManagement = TasksManagement.getInstance();
-                int taskID = Integer.parseInt(tfTaskIDTask.getText());
-                int employeeID = Integer.parseInt(tfEmployeeIDTask.getText());
-                Task tsk = newManagement.findTaskById(taskID);
+                int selectedRow = tbEmployees.getSelectedRow();
+                DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) trTasks.getLastSelectedPathComponent();
 
-                if(tsk != null) {
-                    boolean isDone = newManagement.assignTaskToEmployee(employeeID, tsk);
-                    if(!isDone) {
-                        JOptionPane.showMessageDialog(null, "Task WAS NOT Assigned Successfully!");
-                    }else {
-                        JOptionPane.showMessageDialog(null, "Task Assigned Successfully!");
-                    }
+                if(selectedRow == -1) {
+                    JOptionPane.showMessageDialog(null, "Please select an employee!");
+                    return;
+                }
+
+                if(selectedNode == null || selectedNode.isRoot()) {
+                    JOptionPane.showMessageDialog(null, "Please select a task to assign!");
+                    return;
+                }
+
+                int employeeID = (int) tbEmployees.getValueAt(selectedRow, 0);
+                Task selectedTask = (Task) selectedNode.getUserObject();
+
+                TasksManagement newManagement = TasksManagement.getInstance();
+                boolean isDone = newManagement.assignTaskToEmployee(employeeID, selectedTask);
+
+                if(!isDone) {
+                    JOptionPane.showMessageDialog(null, "Task WAS NOT Assigned Successfully!");
                 }else {
-                    JOptionPane.showMessageDialog(null, "The Task is not available in the company's list!");
+                    JOptionPane.showMessageDialog(null, "Task Assigned Successfully!");
                 }
 
             }
@@ -254,15 +290,23 @@ public class GUI extends Container {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
+                int selectedRow = tbEmployees.getSelectedRow();
+                DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) trTasks.getLastSelectedPathComponent();
+                if(selectedRow == -1 || selectedNode == null ||  selectedNode.isRoot()) {
+                    JOptionPane.showMessageDialog(null, "Please select an employee and/or a task!");
+                }
+
+                int empId = (int) tbEmployees.getValueAt(selectedRow, 0);
+                Task selectedTask = (Task) selectedNode.getUserObject();
+                int taskId = (int) selectedTask.getIdTask();
                 TasksManagement newManagement = TasksManagement.getInstance();
-                Map<Employee, List<Task>> employees = newManagement.getEmployees();
-                int empID = Integer.parseInt(tfEmployeeIDTask.getText());
-                int taskID = Integer.parseInt(tfTaskIDTask.getText());
-                boolean isDone = newManagement.modifyTaskStatus(empID, taskID);
-                if(isDone == false) {
-                    JOptionPane.showMessageDialog(null, "Task Status WAS NOT Modified Successfully!");
+                String newStatus = (String) cbModifyStatus.getSelectedItem();
+                boolean isDone = newManagement.modifyTaskStatus(empId, taskId, newStatus);
+
+                if(!isDone) {
+                    JOptionPane.showMessageDialog(null, "Task WAS NOT Modified Successfully!");
                 }else {
-                    JOptionPane.showMessageDialog(null, "Task Status was modified Successfully!");
+                    JOptionPane.showMessageDialog(null, "Task Modified Successfully!");
                 }
             }
         });
@@ -345,7 +389,7 @@ public class GUI extends Container {
                     }
                 }else {
                     model.addRow(new Object[]{
-                            "No employees respecting the filter found",
+                            "No employees that respect the filter were found",
                             "-----------------------------------"
                     });
                 }
@@ -388,7 +432,7 @@ public class GUI extends Container {
                     }
                 }else {
                     model.addRow(new Object[]{
-                            "No employees respecting the filter found",
+                            "No employees that respect the filter were found",
                             "----------------------------------------",
                             "----------------------------------------"
                     });
@@ -397,5 +441,8 @@ public class GUI extends Container {
                 tableNrTasks.setModel(model);
             }
         });
+
+        displayEmployeeTable();
+        displayTaskTree();
     }
 }

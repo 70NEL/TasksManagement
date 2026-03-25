@@ -1,7 +1,7 @@
-package Business_Logic;
+package businesslogic;
 
-import Data_Model.Employee;
-import Data_Model.Task;
+import datamodel.Employee;
+import datamodel.Task;
 
 import java.io.Serializable;
 import java.util.*;
@@ -24,6 +24,10 @@ public class TasksManagement implements Serializable {
 
     public Map<Employee, List<Task>>  getEmployees() {
         return this.employees;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
     }
 
     public void addEmployee(Employee employee) {
@@ -59,9 +63,9 @@ public class TasksManagement implements Serializable {
 
     public int calculateEmployeeWorkDuration(int idEmployee) {
         int sum = 0;
-        for(Employee e: employees.keySet()) {
-            if(idEmployee == e.getIdEmployee()){
-                for(Task task: employees.get(e)) {
+        for(Employee emp: employees.keySet()) {
+            if(idEmployee == emp.getIdEmployee()){
+                for(Task task: employees.get(emp)) {
                     sum += task.estimateDuration();
                 }
             }
@@ -79,24 +83,20 @@ public class TasksManagement implements Serializable {
     }
 
     public Employee findEmployeeById(int idEmployee) {
-        for(Employee e: employees.keySet()) {
-            if(idEmployee == e.getIdEmployee()) {
-                return e;
+        for(Employee emp: employees.keySet()) {
+            if(idEmployee == emp.getIdEmployee()) {
+                return emp;
             }
         }
         return null;
     }
 
-    public boolean modifyTaskStatus(int idEmployee, int idTask) {
-        for(Employee e: employees.keySet()) {
-            if(idEmployee == e.getIdEmployee()){
-                for(Task task: employees.get(e)) {
+    public boolean modifyTaskStatus(int idEmployee, int idTask, String status) {
+        for(Employee emp: employees.keySet()) {
+            if(idEmployee == emp.getIdEmployee()){
+                for(Task task: employees.get(emp)) {
                     if(task.getIdTask() == idTask) {
-                        if("Completed".equals(task.getStatusTask())) {
-                            task.setStatusTask("Uncompleted");
-                        }else {
-                            task.setStatusTask("Completed");
-                        }
+                        task.setStatusTask(status);
                         return true;
                     }
                 }

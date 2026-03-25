@@ -1,4 +1,4 @@
-package Data_Model;
+package datamodel;
 
 import java.io.Serializable;
 import java.util.Objects;
