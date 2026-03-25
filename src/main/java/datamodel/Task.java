@@ -1,4 +1,4 @@
-package Data_Model;
+package datamodel;
 
 import java.io.Serializable;
 
@@ -35,6 +35,6 @@ public sealed abstract class Task implements Serializable permits SimpleTask, Co
 
     @Override
     public String toString() {
-        return "Task ID: " + idTask  + (this instanceof ComplexTask ? " Complex" : " Simple");
+        return "Task ID: " + idTask  + (this instanceof ComplexTask ? " Complex" : " Simple") + " " + statusTask;
     }
 }

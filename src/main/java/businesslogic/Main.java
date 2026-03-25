@@ -1,7 +1,7 @@
-package Business_Logic;
+package businesslogic;
 
-import Graphical_User.GUI;
-import Serialization.SerializationOperations;
+import gui.GUI;
+import serialization.SerializationOperations;
 
 import javax.swing.*;
 import java.awt.event.WindowAdapter;

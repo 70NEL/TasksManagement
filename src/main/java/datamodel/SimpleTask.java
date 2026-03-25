@@ -1,6 +1,4 @@
-package Data_Model;
-
-import java.io.Serializable;
+package datamodel;
 
 import static java.lang.Math.abs;
 

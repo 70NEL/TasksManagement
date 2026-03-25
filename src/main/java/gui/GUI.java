@@ -1,11 +1,11 @@
-package Graphical_User;
+package gui;
 
-import Business_Logic.TasksManagement;
-import Business_Logic.Utility;
-import Data_Model.ComplexTask;
-import Data_Model.Employee;
-import Data_Model.SimpleTask;
-import Data_Model.Task;
+import businesslogic.TasksManagement;
+import businesslogic.Utility;
+import datamodel.ComplexTask;
+import datamodel.Employee;
+import datamodel.SimpleTask;
+import datamodel.Task;
 
 import java.awt.*;
 import java.util.*;
@@ -16,7 +16,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JTree;
-import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
 public class GUI extends Container {
@@ -379,7 +378,7 @@ public class GUI extends Container {
                     }
                 }else {
                     model.addRow(new Object[]{
-                            "No employees respecting the filter found",
+                            "No employees that respect the filter were found",
                             "-----------------------------------"
                     });
                 }
@@ -422,7 +421,7 @@ public class GUI extends Container {
                     }
                 }else {
                     model.addRow(new Object[]{
-                            "No employees respecting the filter found",
+                            "No employees that respect the filter were found",
                             "----------------------------------------",
                             "----------------------------------------"
                     });

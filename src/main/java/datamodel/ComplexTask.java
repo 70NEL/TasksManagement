@@ -1,6 +1,5 @@
-package Data_Model;
+package datamodel;
 
-import java.io.Serializable;
 import java.util.*;
 
 public non-sealed class ComplexTask extends Task{
@@ -21,8 +20,8 @@ public non-sealed class ComplexTask extends Task{
     @Override
     public int estimateDuration() {
         int sum = 0;
-        for(Task t: subTasks) {
-            sum += t.estimateDuration();
+        for(Task tsk: subTasks) {
+            sum += tsk.estimateDuration();
         }
         return sum;
     }
