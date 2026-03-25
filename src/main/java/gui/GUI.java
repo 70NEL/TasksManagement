@@ -187,35 +187,46 @@ public class GUI extends Container {
                 try{
                     TasksManagement newManagement = TasksManagement.getInstance();
                     Task tsk = null;
-                    int parentID = 0;
+                    boolean tskExisted = false;
+                    String parentIDText = tfParentTaskID.getText();
+                    tsk = newManagement.findTaskById(Integer.parseInt(tfTaskID.getText()));
 
-                    if("Complex".equals(cbTaskType.getSelectedItem())) {
-                        tsk = new ComplexTask();
+                    if(tsk == null) {
+                        if("Complex".equals(cbTaskType.getSelectedItem())) {
+                            tsk = new ComplexTask();
+                        }else {
+                            SimpleTask tk = new SimpleTask();
+                            tk.setStartHour(Integer.parseInt(tfStartHr.getText()));
+                            tk.setEndHour(Integer.parseInt(tfStopHr.getText()));
+                            tsk = tk;
+                        }
+                        tsk.setIdTask(Integer.parseInt(tfTaskID.getText()));
                     }else {
-                        SimpleTask tk = new SimpleTask();
-                        tk.setStartHour(Integer.parseInt(tfStartHr.getText()));
-                        tk.setEndHour(Integer.parseInt(tfStopHr.getText()));
-                        tsk = tk;
+                        tskExisted = true;
                     }
 
-                    tsk.setIdTask(Integer.parseInt(tfTaskID.getText()));
-                    String parentIDText = tfParentTaskID.getText();
-
                     if(!parentIDText.isEmpty()) {
-                        parentID = Integer.parseInt(parentIDText);
+                        int parentID = Integer.parseInt(parentIDText);
                         Task parentTask = newManagement.findTaskById(parentID);
 
                         if(parentTask != null) {
                             if(parentTask instanceof ComplexTask) {
-                                ((ComplexTask) parentTask).addTask(tsk);
-                                tsk.setParentId(parentID);
-                                newManagement.addTask(tsk);
-                                JOptionPane.showMessageDialog(null, "Task Added Successfully!");
+                                if(tsk instanceof ComplexTask &&
+                                        (((ComplexTask) tsk).isAncestorOf(parentTask) || ((ComplexTask) parentTask).getSubTasks().contains(tsk))) {
+                                    JOptionPane.showMessageDialog(null, "A task cant appear twice in a single branch !!");
+                                }else {
+                                    ((ComplexTask) parentTask).addTask(tsk);
+                                    if(!tskExisted) {
+                                        tsk.setParentId(parentID);
+                                        newManagement.addTask(tsk);
+                                    }
+                                    JOptionPane.showMessageDialog(null, "Task Added Successfully!");
+                                }
                             }else {
                                 JOptionPane.showMessageDialog(null, "Tasks can't have a simple task as parent!");
                             }
                         }else {
-                            JOptionPane.showMessageDialog(null, "The Task ID is invalid!");
+                            JOptionPane.showMessageDialog(null, "The Task ID for the Parent is invalid!");
                         }
                     }else {
                         boolean isAdded = newManagement.addTask(tsk);

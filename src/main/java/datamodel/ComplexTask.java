@@ -25,4 +25,24 @@ public non-sealed class ComplexTask extends Task{
         }
         return sum;
     }
+
+    public boolean isAncestorOf(Task tsk) {
+        if(this == tsk) {
+            return true;
+        }
+
+        for(Task son: this.subTasks) {
+            if(son == tsk) {
+                return true;
+            }
+            if(son instanceof ComplexTask) {
+                if(((ComplexTask) son).isAncestorOf(tsk)) {
+                    return true;
+                }
+
+            }
+        }
+
+        return false;
+    }
  }
