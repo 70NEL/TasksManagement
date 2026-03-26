@@ -145,24 +145,24 @@
     </mxGraphModel>
   </diagram>
   <diagram name="Page-3" id="n2p6ecB0zABTD2ZIRmQa">
-    <mxGraphModel dx="1482" dy="1104" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1537" dy="1573" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="71hga4dstZipZOPw_bSg-1" edge="1" parent="1" source="hd_oPgOREBwoixWd6gj2-1" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=107;exitDy=14;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" target="hd_oPgOREBwoixWd6gj2-5">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="71hga4dstZipZOPw_bSg-2" edge="1" parent="1" source="hd_oPgOREBwoixWd6gj2-1" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=107;exitDy=71;exitPerimeter=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" target="hd_oPgOREBwoixWd6gj2-6">
+        <mxCell id="71hga4dstZipZOPw_bSg-2" edge="1" parent="1" source="hd_oPgOREBwoixWd6gj2-1" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=107;exitDy=42.5;exitPerimeter=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" target="hd_oPgOREBwoixWd6gj2-6">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="vs6d7TWCLtfeEjh5CYag-1" edge="1" parent="1" source="hd_oPgOREBwoixWd6gj2-1" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" target="Gkae-6hUvwc_UqkNAt6j-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="hd_oPgOREBwoixWd6gj2-1" parent="1" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" value="businesslogic" vertex="1">
-          <mxGeometry height="71" width="107" x="-251" y="-201" as="geometry" />
+          <mxGeometry height="71" width="107" x="-349" y="-146" as="geometry" />
         </mxCell>
         <mxCell id="hd_oPgOREBwoixWd6gj2-2" parent="1" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" value="dataaccess" vertex="1">
-          <mxGeometry height="71" width="107" x="-456" y="1297" as="geometry" />
+          <mxGeometry height="71" width="107" x="-349" y="1299" as="geometry" />
         </mxCell>
         <mxCell id="vs6d7TWCLtfeEjh5CYag-7" edge="1" parent="1" source="hd_oPgOREBwoixWd6gj2-3" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=107;exitDy=28.25;exitPerimeter=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" target="vs6d7TWCLtfeEjh5CYag-6">
           <mxGeometry relative="1" as="geometry" />
@@ -177,7 +177,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="hd_oPgOREBwoixWd6gj2-4" parent="1" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" value="gui" vertex="1">
-          <mxGeometry height="71" width="107" x="-431" y="931" as="geometry" />
+          <mxGeometry height="71" width="107" x="-349" y="935" as="geometry" />
         </mxCell>
         <mxCell id="hd_oPgOREBwoixWd6gj2-5" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Main&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ &lt;u&gt;main(args: String[]) : void&lt;/u&gt;&lt;/p&gt;" vertex="1">
           <mxGeometry height="90" width="160" x="-20" y="-329" as="geometry" />
@@ -189,7 +189,7 @@
           <mxGeometry height="145" width="329" x="-61" y="116" as="geometry" />
         </mxCell>
         <mxCell id="vs6d7TWCLtfeEjh5CYag-2" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;SerializationOperations&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ save() : void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ load() : void&lt;/p&gt;" vertex="1">
-          <mxGeometry height="145" width="329" x="-222" y="1279" as="geometry" />
+          <mxGeometry height="145" width="329" x="8" y="1334" as="geometry" />
         </mxCell>
         <mxCell id="vs6d7TWCLtfeEjh5CYag-3" edge="1" parent="1" source="hd_oPgOREBwoixWd6gj2-2" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=107;exitDy=42.5;exitPerimeter=0;entryX=-0.004;entryY=0.394;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=12;startSize=8;endSize=8;" target="vs6d7TWCLtfeEjh5CYag-2">
           <mxGeometry relative="1" as="geometry" />
@@ -225,7 +225,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="vs6d7TWCLtfeEjh5CYag-16" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;SerializationOperations&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ panel1 : JPanel&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ tabbedPane : JTabbedPane&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ JPanelEmployee : JPanel&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ JPanelAddTask : JPanel&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ JPanelAssignTasks : JPanel&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ JPanelUtility : JPanel&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ tableWorkDuration : JTable&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ cbTaskType : JComboBox&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ cbModifyStatus : JComboBox&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ trTasks : JTree&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ cbModStatus : JCheckBox&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ tbEmployees : JTable&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ tableFilter : JTable&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ tableNrTasks : JTable&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ GUI()&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;- displayEmployeeTable() : void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;- createTreeNode(tsk : Task) : DefaultMutableTreeNode&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;- displayTaskTree() : void&lt;/p&gt;" vertex="1">
-          <mxGeometry height="326" width="458" x="-252" y="859" as="geometry" />
+          <mxGeometry height="326" width="458" x="8" y="887" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
