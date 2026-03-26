@@ -35,6 +35,6 @@ public sealed abstract class Task implements Serializable permits SimpleTask, Co
 
     @Override
     public String toString() {
-        return "Task ID: " + idTask  + (this instanceof ComplexTask ? " Complex" : " Simple") + " " + statusTask;
+        return "Task ID: " + idTask  + (this instanceof ComplexTask ? " Complex" : " Simple");
     }
 }
