@@ -179,6 +179,9 @@
         <mxCell id="Gkae-6hUvwc_UqkNAt6j-1" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Utility&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ utilityFilter(info : TasksManagement) : List&amp;lt;Employee&amp;gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ nrOfTasks() : Map&amp;lt;String, Map&amp;lt;String, Integer&amp;gt;&amp;gt;&lt;/p&gt;" vertex="1">
           <mxGeometry height="145" width="329" x="-61" y="116" as="geometry" />
         </mxCell>
+        <mxCell id="vs6d7TWCLtfeEjh5CYag-2" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;SerializationOperations&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ save() : void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ load() : void&lt;/p&gt;" vertex="1">
+          <mxGeometry height="145" width="329" x="-61" y="373" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
