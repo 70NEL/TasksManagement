@@ -145,7 +145,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="Page-3" id="n2p6ecB0zABTD2ZIRmQa">
-    <mxGraphModel dx="2291" dy="1200" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1923" dy="1100" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -227,20 +227,10 @@
         <mxCell id="vs6d7TWCLtfeEjh5CYag-16" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;GUI&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ panel1 : JPanel&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ tabbedPane : JTabbedPane&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ JPanelEmployee : JPanel&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ JPanelAddTask : JPanel&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ JPanelAssignTasks : JPanel&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ JPanelUtility : JPanel&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ tableWorkDuration : JTable&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ cbTaskType : JComboBox&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ cbModifyStatus : JComboBox&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ trTasks : JTree&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ cbModStatus : JCheckBox&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ tbEmployees : JTable&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ tableFilter : JTable&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ tableNrTasks : JTable&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ GUI()&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;- displayEmployeeTable() : void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;- createTreeNode(tsk : Task) : DefaultMutableTreeNode&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;- displayTaskTree() : void&lt;/p&gt;" vertex="1">
           <mxGeometry height="326" width="458" x="14" y="917" as="geometry" />
         </mxCell>
-        <mxCell id="vs6d7TWCLtfeEjh5CYag-18" edge="1" parent="1" source="vs6d7TWCLtfeEjh5CYag-6" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;rounded=0;fontSize=12;entryX=0.863;entryY=0.996;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryPerimeter=0;" target="hd_oPgOREBwoixWd6gj2-6" value="">
+        <mxCell id="vs6d7TWCLtfeEjh5CYag-18" edge="1" parent="1" source="hd_oPgOREBwoixWd6gj2-6" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;rounded=0;fontSize=12;entryX=1;entryY=0.25;entryDx=0;entryDy=0;exitX=0.93;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" target="vs6d7TWCLtfeEjh5CYag-6" value="">
           <mxGeometry relative="1" x="-1" y="3" as="geometry">
-            <mxPoint x="538" y="320" as="sourcePoint" />
-            <mxPoint x="357" y="255" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="vs6d7TWCLtfeEjh5CYag-19" edge="1" parent="1" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;rounded=0;fontSize=12;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" target="hd_oPgOREBwoixWd6gj2-6" value="">
-          <mxGeometry relative="1" x="-1" y="3" as="geometry">
-            <Array as="points">
-              <mxPoint x="-141" y="704" />
-              <mxPoint x="-141" y="-7" />
-            </Array>
-            <mxPoint x="-88" y="704" as="sourcePoint" />
-            <mxPoint x="-121" y="6" as="targetPoint" />
+            <mxPoint x="532.75" y="147" as="sourcePoint" />
+            <mxPoint x="386.0039999999999" y="231.0440000000001" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="vs6d7TWCLtfeEjh5CYag-20" edge="1" parent="1" source="vs6d7TWCLtfeEjh5CYag-2" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;fontSize=12;exitX=1;exitY=0.25;exitDx=0;exitDy=0;edgeStyle=orthogonalEdgeStyle;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" target="hd_oPgOREBwoixWd6gj2-5" value="Use">
@@ -261,6 +251,16 @@
             </Array>
             <mxPoint x="514" y="1001" as="sourcePoint" />
             <mxPoint x="725" y="219" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vs6d7TWCLtfeEjh5CYag-23" edge="1" parent="1" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;rounded=0;fontSize=12;entryX=0;entryY=0.75;entryDx=0;entryDy=0;exitX=0.93;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" target="vs6d7TWCLtfeEjh5CYag-8" value="">
+          <mxGeometry relative="1" x="-1" y="3" as="geometry">
+            <Array as="points">
+              <mxPoint x="-161" y="-2" />
+              <mxPoint x="-161" y="677" />
+            </Array>
+            <mxPoint x="-74" y="-2" as="sourcePoint" />
+            <mxPoint x="-182" y="334" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
