@@ -145,7 +145,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="Page-3" id="n2p6ecB0zABTD2ZIRmQa">
-    <mxGraphModel dx="1537" dy="1573" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="992" dy="1808" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -158,10 +158,10 @@
         <mxCell id="vs6d7TWCLtfeEjh5CYag-1" edge="1" parent="1" source="hd_oPgOREBwoixWd6gj2-1" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" target="Gkae-6hUvwc_UqkNAt6j-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="hd_oPgOREBwoixWd6gj2-1" parent="1" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" value="businesslogic" vertex="1">
+        <mxCell id="hd_oPgOREBwoixWd6gj2-1" parent="1" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;fillColor=#6a00ff;fontColor=#ffffff;strokeColor=#3700CC;" value="businesslogic" vertex="1">
           <mxGeometry height="71" width="107" x="-349" y="-146" as="geometry" />
         </mxCell>
-        <mxCell id="hd_oPgOREBwoixWd6gj2-2" parent="1" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" value="dataaccess" vertex="1">
+        <mxCell id="hd_oPgOREBwoixWd6gj2-2" parent="1" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;fillColor=#6a00ff;fontColor=#ffffff;strokeColor=#3700CC;" value="dataaccess" vertex="1">
           <mxGeometry height="71" width="107" x="-349" y="1299" as="geometry" />
         </mxCell>
         <mxCell id="vs6d7TWCLtfeEjh5CYag-7" edge="1" parent="1" source="hd_oPgOREBwoixWd6gj2-3" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=107;exitDy=28.25;exitPerimeter=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" target="vs6d7TWCLtfeEjh5CYag-6">
@@ -170,13 +170,13 @@
         <mxCell id="vs6d7TWCLtfeEjh5CYag-9" edge="1" parent="1" source="hd_oPgOREBwoixWd6gj2-3" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=107;exitDy=71;exitPerimeter=0;fontSize=12;startSize=8;endSize=8;" target="vs6d7TWCLtfeEjh5CYag-8">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="hd_oPgOREBwoixWd6gj2-3" parent="1" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" value="datamodel" vertex="1">
+        <mxCell id="hd_oPgOREBwoixWd6gj2-3" parent="1" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;fillColor=#6a00ff;fontColor=#ffffff;strokeColor=#3700CC;" value="datamodel" vertex="1">
           <mxGeometry height="71" width="107" x="-349" y="478" as="geometry" />
         </mxCell>
         <mxCell id="vs6d7TWCLtfeEjh5CYag-17" edge="1" parent="1" source="hd_oPgOREBwoixWd6gj2-4" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=107;exitDy=42.5;exitPerimeter=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" target="vs6d7TWCLtfeEjh5CYag-16">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="hd_oPgOREBwoixWd6gj2-4" parent="1" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" value="gui" vertex="1">
+        <mxCell id="hd_oPgOREBwoixWd6gj2-4" parent="1" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;fillColor=#6a00ff;fontColor=#ffffff;strokeColor=#3700CC;" value="gui" vertex="1">
           <mxGeometry height="71" width="107" x="-349" y="935" as="geometry" />
         </mxCell>
         <mxCell id="hd_oPgOREBwoixWd6gj2-5" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Main&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ &lt;u&gt;main(args: String[]) : void&lt;/u&gt;&lt;/p&gt;" vertex="1">
