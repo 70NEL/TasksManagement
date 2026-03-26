@@ -1,5 +1,6 @@
 package businesslogic;
 
+import datamodel.ComplexTask;
 import datamodel.Employee;
 import datamodel.Task;
 
@@ -43,6 +44,15 @@ public class Utility {
             List<Task> temp = employees.get(emp);
             employeeName = emp.getName();
             for(Task task: temp){
+                if(task instanceof ComplexTask) {
+                    for(Task tsk : ((ComplexTask) task).getSubTasks()) {
+                        if("Completed".equals(task.getStatusTask())) {
+                            taskNumber[0] = taskNumber[0] + 1;
+                        }else {
+                            taskNumber[1] = taskNumber[1] + 1;
+                        }
+                    }
+                }
                 if("Completed".equals(task.getStatusTask())) {
                     taskNumber[0] = taskNumber[0] + 1;
                 }else {

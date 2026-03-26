@@ -1,9 +1,12 @@
 package businesslogic;
 
+import datamodel.ComplexTask;
 import datamodel.Employee;
+import datamodel.SimpleTask;
 import datamodel.Task;
 
 import java.io.Serializable;
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class TasksManagement implements Serializable {
@@ -91,17 +94,61 @@ public class TasksManagement implements Serializable {
         return null;
     }
 
+    public boolean checkParentStatus(ComplexTask taskParent) {
+        int nrOfTasks = 0;
+        for (Task task : taskParent.getSubTasks()) {
+            System.out.println(taskParent.getIdTask() + taskParent.getStatusTask() + " " + task.getIdTask() + task.getStatusTask());
+            if ("Completed".equals(task.getStatusTask())) {
+                nrOfTasks++;
+            } else {
+                break;
+            }
+        }
+
+        System.out.println(nrOfTasks + " " + taskParent.getSubTasks().size());
+        if (nrOfTasks == taskParent.getSubTasks().size()) {
+            taskParent.setStatusTask("Completed");
+            System.out.println("Am schimbat statusul task-ului " + taskParent.getSubTasks() + " cu succes");
+            return true;
+        }
+
+        return false;
+    }
+
     public boolean modifyTaskStatus(int idEmployee, int idTask, String status) {
-        for(Employee emp: employees.keySet()) {
-            if(idEmployee == emp.getIdEmployee()){
-                for(Task task: employees.get(emp)) {
-                    if(task.getIdTask() == idTask) {
-                        task.setStatusTask(status);
-                        return true;
+        Task tsk = findTaskById(idTask);
+        int parentId = tsk.getParentId();
+        boolean result = false;
+        if(tsk instanceof SimpleTask) {
+            for(Employee emp: employees.keySet()) {
+                if(idEmployee == emp.getIdEmployee()){
+                    for(Task task: employees.get(emp)) {
+                        if(task.getIdTask() == idTask) {
+                            task.setStatusTask(status);
+                            result = true;
+                        }
                     }
                 }
             }
+        }else if(tsk instanceof ComplexTask) {
+            for(Employee emp: employees.keySet()) {
+                for(Task task: employees.get(emp)) {
+                    task.setStatusTask(status);
+                }
+                return result;
+            }
         }
-        return false;
+
+
+        TasksManagement newManagement = getInstance();
+        Task parentTask =  findTaskById(parentId);
+        if(parentTask instanceof ComplexTask) {
+            System.out.println("intra aici " + parentTask.getIdTask() + " " + idTask);
+            if(newManagement.checkParentStatus((ComplexTask) parentTask)) {
+                System.out.println("Parent task's status was modified");
+            }
+        }
+
+        return result;
     }
 }

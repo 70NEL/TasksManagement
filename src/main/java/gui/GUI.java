@@ -303,6 +303,7 @@ public class GUI extends Container {
                 int taskId = (int) selectedTask.getIdTask();
                 TasksManagement newManagement = TasksManagement.getInstance();
                 String newStatus = (String) cbModifyStatus.getSelectedItem();
+                System.out.println(empId + " " + taskId + " " + newStatus);
                 boolean isDone = newManagement.modifyTaskStatus(empId, taskId, newStatus);
 
                 if(!isDone) {
