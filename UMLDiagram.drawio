@@ -145,7 +145,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="Page-3" id="n2p6ecB0zABTD2ZIRmQa">
-    <mxGraphModel dx="1480" dy="903" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1368" dy="987" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -165,6 +165,9 @@
           <mxGeometry height="71" width="107" x="-431" y="1035" as="geometry" />
         </mxCell>
         <mxCell id="vs6d7TWCLtfeEjh5CYag-7" edge="1" parent="1" source="hd_oPgOREBwoixWd6gj2-3" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=107;exitDy=28.25;exitPerimeter=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" target="vs6d7TWCLtfeEjh5CYag-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vs6d7TWCLtfeEjh5CYag-9" edge="1" parent="1" source="hd_oPgOREBwoixWd6gj2-3" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=107;exitDy=71;exitPerimeter=0;fontSize=12;startSize=8;endSize=8;" target="vs6d7TWCLtfeEjh5CYag-8">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="hd_oPgOREBwoixWd6gj2-3" parent="1" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" value="datamodel" vertex="1">
@@ -193,6 +196,24 @@
         </mxCell>
         <mxCell id="vs6d7TWCLtfeEjh5CYag-8" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Task&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;div&gt;&amp;nbsp;- parentId : int&lt;/div&gt;&lt;div&gt;&amp;nbsp;- idTask : int&lt;/div&gt;&lt;div&gt;&amp;nbsp;- statusTask&amp;nbsp; : String&lt;/div&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ estimationDuration() : int&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ toString() : String&lt;/p&gt;" vertex="1">
           <mxGeometry height="132" width="288" x="-88" y="549" as="geometry" />
+        </mxCell>
+        <mxCell id="vs6d7TWCLtfeEjh5CYag-10" edge="1" parent="1" source="vs6d7TWCLtfeEjh5CYag-11" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;fontSize=12;curved=1;entryX=1;entryY=0.25;entryDx=0;entryDy=0;exitX=0;exitY=0.25;exitDx=0;exitDy=0;" target="vs6d7TWCLtfeEjh5CYag-8" value="Extends">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="290" y="719" as="sourcePoint" />
+            <mxPoint x="117" y="736" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vs6d7TWCLtfeEjh5CYag-11" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;SimpleTask&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;div&gt;&amp;nbsp;- startHour : int&lt;/div&gt;&lt;div&gt;&amp;nbsp;- endHour : int&lt;/div&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ estimationDuration() : int&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="132" width="288" x="314" y="498" as="geometry" />
+        </mxCell>
+        <mxCell id="vs6d7TWCLtfeEjh5CYag-12" edge="1" parent="1" source="vs6d7TWCLtfeEjh5CYag-14" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;fontSize=12;curved=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" target="vs6d7TWCLtfeEjh5CYag-8" value="Extends">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="309" y="730" as="sourcePoint" />
+            <mxPoint x="303" y="626" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vs6d7TWCLtfeEjh5CYag-14" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ComplexTask&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;br&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getSubTasks() : List&amp;lt;Task&amp;gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ addTask(task : Task) : void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ deleteTask(task : Task) : void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ estimateDuration() : int&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ isAncestorOf(tsk : Task) : boolean&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="139" width="289" x="314" y="681" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
