@@ -214,6 +214,8 @@ public class GUI extends Container {
                                 if(tsk instanceof ComplexTask &&
                                         (((ComplexTask) tsk).isAncestorOf(parentTask) || ((ComplexTask) parentTask).getSubTasks().contains(tsk))) {
                                     JOptionPane.showMessageDialog(null, "A task cant appear twice in a single branch !!");
+                                }else if(tsk instanceof SimpleTask && ((ComplexTask) parentTask).getSubTasks().contains(tsk)) {
+                                    JOptionPane.showMessageDialog(null, "A task cant appear twice in a single branch !!");
                                 }else {
                                     ((ComplexTask) parentTask).addTask(tsk);
                                     if(!tskExisted) {
